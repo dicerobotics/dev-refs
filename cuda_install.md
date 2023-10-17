@@ -1,4 +1,4 @@
-# How to install CUDA & cuDNN on Ubuntu 22.04
+# How to install CUDA, cuDNN, Miniconda, Pytorch on Ubuntu 22.04
 
 ## Install NVIDIA drivers
 
@@ -25,10 +25,10 @@ sudo ubuntu-drivers autoinstall
 ```
 
 ### Install NVIDIA drivers
-My __recommended__ version is 525, adapt to yours
+My __recommended__ version is 535, adapt to yours
 
 ```shell
-sudo apt install nvidia-driver-525
+sudo apt install nvidia-driver-535
 ```
 
 ### Reboot & Check

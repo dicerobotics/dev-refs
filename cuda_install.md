@@ -133,7 +133,9 @@ conda info --env
 conda create --name env_torch
 conda activate env_torch
 conda config --append channels conda-forge # adds the new channel to the bottom, making it the lowest priority
+conda config --append channels annaconda
 conda config --append channels nvidia
+conda config --append channels pytorch
 ```
 Interested readers may read about channel priority by running the following command
 ``` shell

@@ -172,7 +172,11 @@ conda install -c anaconda pip
 which -a pip # Used to see all installed versions of a package pip
 python -m pip install PACKAGE_NAME # install package with locally install package manager pip
 ```
-In our case, we successfully installed all packages but lpips with conda package manager.
+In our case, we successfully installed all packages but lpips with conda package manager. All conda packages may alternatively be installed with single command.
+``` shell
+condal insall tqdm matplotlib scipy seaborn scikit-image -c conda-forge -c anaconda
+```
+
 
 ## Mix Environment: Advanced
 In case you are expected to work on a single project that uses libraries designed for frameworks other than PyTorch (e.g. scikit-learn, keras), we recommend creating a new clone of env_torch and installing extra packages in a new environment specially designed to work on advanced projects.

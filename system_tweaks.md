@@ -3,6 +3,6 @@ Add Universe Repository
 sudo add-apt-repository universe
 ```
 Gnome Tweaks
-'''shell
+```shell
 sudo apt install gnome-tweaks
 ```

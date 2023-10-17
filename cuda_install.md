@@ -113,6 +113,7 @@ which -a pip
 ```
 
 ## Install Miniconda
+Download Miniconda installer form the web. https://docs.conda.io/projects/miniconda/en/latest/index.html
 ```shell
 sha256sum ~/Downloads/Miniconda3-latest-Linux-x86_64.sh
 sudo bash ~/Downloads/Miniconda3-latest-Linux-x86_64.sh

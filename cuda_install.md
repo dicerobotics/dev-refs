@@ -203,7 +203,8 @@ We installed the following packages as per our needs.
 ``` shell
 python -m pip install opencv-python
 python -m pip install grad-cam
-python -m pip install datasets
+conda install -c conda-forge datasets
+conda install -c conda-forge transformers
 ```
 
 

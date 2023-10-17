@@ -1,4 +1,4 @@
-# How to install CUDA, cuDNN, Miniconda, Pytorch on Ubuntu 22.04
+# How to install CUDA, cuDNN, VSCode, Miniconda, Pytorch on Ubuntu 22.04
 
 ## Install NVIDIA drivers
 
@@ -7,9 +7,9 @@
 sudo apt update && sudo apt upgrade
 ```
 
-### Remove previous NVIDIA installation
+### Remove previous NVIDIA installation (if any)
 ```shell
-sudo apt autoremove nvidia* --purge
+!sudo apt autoremove nvidia* --purge
 ```
 
 ### Check Ubuntu devices
@@ -54,7 +54,19 @@ sudo apt install nvidia-cuda-toolkit
 
 ### Check CUDA install
 ```shell
+export "PATH=/usr/local/cuda/bin:$PATH"
 nvcc --version
+```
+
+### export path to the .bashrc file
+You need to edit .bashrc file with administrator privileges so you need not to export local cuda path manually everytime you start terminal.
+Please add following line in .bashrc file
+
+export "PATH=/usr/local/cuda/bin:$PATH"
+
+```shell
+sudo nano ./.bashrc
+export "PATH=/usr/local/cuda/bin:$PATH"
 ```
 
 ## Install cuDNN
@@ -70,6 +82,7 @@ nvcc --version
 ```shell
 cd ~/Downloads
 sudo apt install ./cuda-repo-ubuntu2204-12-2-local_12.2.2-535.104.05-1_amd64.deb
+rm ./Downloads/cudnn-local-repo-ubuntu2204-8.9.5.29_1.0-1_amd64.deb
 sudo cp /var/cudnn-local-repo-ubuntu2204-8.9.5.29/cudnn-local-275FA572-keyring.gpg /usr/share/keyrings/
 ```
 
@@ -82,23 +95,42 @@ sudo apt install /var/cudnn-local-repo-ubuntu2204-8.9.5.29/libcudnn8-dev_8.9.5.2
 sudo apt install /var/cudnn-local-repo-ubuntu2204-8.9.5.29/libcudnn8-samples_8.9.5.29-1+cuda12.2_amd64.deb
 ```
 
-## Test CUDA on Pytorch
-
-
-### Create a virtualenv and activate it
+## Install VS Code
 ```shell
-sudo apt-get install python3-pip
-sudo pip3 install virtualenv 
-virtualenv -p py3.10 venv
-source venv/bin/activate
+sudo dpkg -i ./Downloads/code_1.83.1-1696982868_amd64.deb 
+rm ./Downloads/code_1.83.1-1696982868_amd64.deb
+```
+## Install pip and check installation directory
+```shell
+sudo apt install python3-pip
+which -a pip
+```
+
+## Install Miniconda
+```shell
+sudo bash ~/Downloads/Miniconda3-latest-Linux-x86_64.sh
+rm ~/Downloads/Miniconda3-latest-Linux-x86_64.sh
+conda config --set auto_activate_base false
+conda deactivate
+conda update conda
+```
+
+
+## Test CUDA on Pytorch within a virtual conda environment
+
+### Create Miniconda virtual environment and activate it
+```shell
+conda info --env
+conda create --name env_torch
+conda activate env_torch
 ```
 
 ### Install pytorch
 ```shell
-pip3 install torch torchvision torchaudio
+conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia
 ```
 
-### Open Python and execute a test
+### Open Python kernel in VSCODE and execute a test
 ```python
 import torch
 print(torch.cuda.is_available()) # should be True

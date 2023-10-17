@@ -161,6 +161,7 @@ conda install matplotlib
 conda install -c anaconda scipy
 conda install -c anaconda seaborn
 conda install -c conda-forge lpips
+conda install -c anaconda scikit-image
 
 ```
 In case you can't install optional packages using conda install because of long time solving environments. You might consider install pip locally and install packages using locally installed version of pip.

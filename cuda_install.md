@@ -114,6 +114,7 @@ which -a pip
 
 ## Install Miniconda
 ```shell
+sha256sum ~/Downloads/Miniconda3-latest-Linux-x86_64.sh
 sudo bash ~/Downloads/Miniconda3-latest-Linux-x86_64.sh
 rm ~/Downloads/Miniconda3-latest-Linux-x86_64.sh
 conda config --set auto_activate_base false

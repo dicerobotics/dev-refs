@@ -8,6 +8,7 @@ sudo apt update && sudo apt upgrade
 ```
 
 ### Remove previous NVIDIA installation (if any)
+Only use this command if necessary. It might corrupt your system.
 ```shell
 !sudo apt autoremove nvidia* --purge
 ```

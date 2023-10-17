@@ -158,4 +158,13 @@ Though we are done with the necessary installations, some users might like insta
 ``` shell
 conda install tqdm
 conda install matplotlib
+conda install -c conda-forge lpips
+
 ```
+In case you can't install optional packages using conda install because of long time solving environments. You might consider install pip locally and install packages using locally installed version of pip.
+``` shell
+conda install -c anaconda pip
+which -a pip # Used to see all installed version of a package pip
+sudo python -m pip install PACKAGE_NAME # install package with locally install package manager pip
+```
+

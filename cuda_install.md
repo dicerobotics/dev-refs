@@ -57,6 +57,7 @@ sudo dpkg -i cuda-repo-ubuntu2204-12-2-local_12.2.2-535.104.05-1_amd64.deb
 sudo cp /var/cuda-repo-ubuntu2204-12-2-local/cuda-*-keyring.gpg /usr/share/keyrings/
 sudo apt-get update
 sudo apt-get -y install cuda
+rm cuda-repo-ubuntu2204-12-2-local_12.2.2-535.104.05-1_amd64.deb
 ```
 
 ### Check CUDA install
@@ -102,18 +103,20 @@ sudo apt install /var/cudnn-local-repo-ubuntu2204-8.9.5.29/libcudnn8-dev_8.9.5.2
 sudo apt install /var/cudnn-local-repo-ubuntu2204-8.9.5.29/libcudnn8-samples_8.9.5.29-1+cuda12.2_amd64.deb
 ```
 
-## Install VS Code
+## Setup Workspace Environment
+
+### Install VS Code
 ``` shell
 sudo dpkg -i ./Downloads/code_1.83.1-1696982868_amd64.deb 
 rm ./Downloads/code_1.83.1-1696982868_amd64.deb
 ```
-## Install pip and check installation directory
+### Install pip and check installation directory
 ``` shell
 sudo apt install python3-pip
 which -a pip
 ```
 
-## Install Miniconda
+### Install Miniconda
 Download the Miniconda installer from the web. https://docs.conda.io/projects/miniconda/en/latest/index.html
 ``` shell
 sha256sum ~/Downloads/Miniconda3-latest-Linux-x86_64.sh
@@ -123,9 +126,6 @@ conda config --set auto_activate_base false
 conda deactivate
 conda update conda
 ```
-
-
-## Test CUDA on Pytorch within a virtual conda environment
 
 ### Create a Miniconda virtual environment and activate it
 ``` shell
@@ -139,6 +139,8 @@ Interested readers may read about channel priority by running the following comm
 ``` shell
 conda config --describe channel_priority
 ```
+
+## Install and Test Pytorch within a virtual Miniconda environment
 
 ### Install PyTorch
 ``` shell
@@ -167,9 +169,11 @@ conda install -c anaconda scikit-image
 In case you can't install optional packages using conda because of the long time for solving environments. You might consider install pip locally and install packages using locally installed version of pip.
 ``` shell
 conda install -c anaconda pip
-which -a pip # Used to see all installed version of a package pip
+which -a pip # Used to see all installed versions of a package pip
 python -m pip install PACKAGE_NAME # install package with locally install package manager pip
 ```
-In our case, we successfully installed all package but lpips with conda package manager.
+In our case, we successfully installed all packages but lpips with conda package manager.
+
+
 
 

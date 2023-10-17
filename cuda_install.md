@@ -156,8 +156,8 @@ print(t.device) # should be CUDA
 ### Optional Installations
 Though we are done with the necessary installations, some users might like installing the following modules. Before you install the following, make sure you are in miniconda virtual environment of your choice. If are not, activate it by typing "conda activate ENV_NAME". In my case, my ENV_NAME is env_torch.
 ``` shell
-conda install tqdm
-conda install matplotlib
+conda install -c conda-forge tqdm
+conda install -c conda-forge matplotlib
 conda install -c anaconda scipy
 conda install -c anaconda seaborn
 conda install -c conda-forge lpips

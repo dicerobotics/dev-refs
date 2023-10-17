@@ -162,7 +162,7 @@ conda install -c conda-forge tqdm
 conda install -c conda-forge matplotlib
 conda install -c anaconda scipy
 conda install -c anaconda seaborn
-conda install -c conda-forge lpips
+conda install -c conda-forge lpips # Takes long time
 conda install -c anaconda scikit-image
 
 ```

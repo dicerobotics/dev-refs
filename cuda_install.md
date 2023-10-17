@@ -3,53 +3,53 @@
 ## Install NVIDIA drivers
 
 ### Update & upgrade
-```shell
+``` shell
 sudo apt update && sudo apt upgrade
 ```
 
 ### Remove previous NVIDIA installation (if any)
-Only use this command if necessary. It might corrupt your system.
-```shell
+You should only use this command if it's necessary. It might corrupt your system.
+``` shell
 !sudo apt autoremove nvidia* --purge
 ```
 
 ### Check Ubuntu devices
-```shell
+``` shell
 ubuntu-drivers devices
 ```
 You will install the NVIDIA driver whose version is tagged with __recommended__
 
 
 ### Install Ubuntu drivers
-```shell
+``` shell
 sudo ubuntu-drivers autoinstall
 ```
 
 ### Install NVIDIA drivers
 My __recommended__ version is 535, adapt to yours
 
-```shell
+``` shell
 sudo apt install nvidia-driver-535
 ```
 
 ### Reboot & Check
-```shell
+``` shell
 reboot
 ```
 after restart verify that the following command works
-```shell
+``` shell
 nvidia-smi
 ```
 
 ## Install CUDA drivers
 
 ### Update & upgrade
-```shell
+``` shell
 sudo apt update && sudo apt upgrade
 ```
 
 ### Install CUDA toolkit
-```shell
+``` shell
 wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-ubuntu2204.pin
 sudo mv cuda-ubuntu2204.pin /etc/apt/preferences.d/cuda-repository-pin-600
 wget https://developer.download.nvidia.com/compute/cuda/12.2.2/local_installers/cuda-repo-ubuntu2204-12-2-local_12.2.2-535.104.05-1_amd64.deb
@@ -60,7 +60,7 @@ sudo apt-get -y install cuda
 ```
 
 ### Check CUDA install
-```shell
+``` shell
 export "PATH=/usr/local/cuda/bin:$PATH"
 nvcc --version
 ```
@@ -71,7 +71,7 @@ Please add following line in .bashrc file
 
 export "PATH=/usr/local/cuda/bin:$PATH"
 
-```shell
+``` shell
 sudo nano ./.bashrc
 export "PATH=/usr/local/cuda/bin:$PATH"
 ```
@@ -81,12 +81,12 @@ export "PATH=/usr/local/cuda/bin:$PATH"
 ### Download cuDNN .deb file
 You can download cuDNN file [here](https://developer.nvidia.com/rdp/cudnn-download). You will need an Nvidia account.
 Select the cuDNN version for the appropriate CUDA version, which is the version that appears when you run:
-```shell
+``` shell
 nvcc --version
 ```
 
 ### Install cuDNN
-```shell
+``` shell
 cd ~/Downloads
 sudo apt install ./cuda-repo-ubuntu2204-12-2-local_12.2.2-535.104.05-1_amd64.deb
 rm ./Downloads/cudnn-local-repo-ubuntu2204-8.9.5.29_1.0-1_amd64.deb
@@ -95,7 +95,7 @@ sudo cp /var/cudnn-local-repo-ubuntu2204-8.9.5.29/cudnn-local-275FA572-keyring.g
 
 My cuDNN version is 8, adapt the following to your version:
 
-```shell
+``` shell
 sudo apt update
 sudo apt install /var/cudnn-local-repo-ubuntu2204-8.9.5.29/libcudnn8_8.9.5.29-1+cuda12.2_amd64.deb
 sudo apt install /var/cudnn-local-repo-ubuntu2204-8.9.5.29/libcudnn8-dev_8.9.5.29-1+cuda12.2_amd64.deb
@@ -103,19 +103,19 @@ sudo apt install /var/cudnn-local-repo-ubuntu2204-8.9.5.29/libcudnn8-samples_8.9
 ```
 
 ## Install VS Code
-```shell
+``` shell
 sudo dpkg -i ./Downloads/code_1.83.1-1696982868_amd64.deb 
 rm ./Downloads/code_1.83.1-1696982868_amd64.deb
 ```
 ## Install pip and check installation directory
-```shell
+``` shell
 sudo apt install python3-pip
 which -a pip
 ```
 
 ## Install Miniconda
-Download Miniconda installer form the web. https://docs.conda.io/projects/miniconda/en/latest/index.html
-```shell
+Download the Miniconda installer from the web. https://docs.conda.io/projects/miniconda/en/latest/index.html
+``` shell
 sha256sum ~/Downloads/Miniconda3-latest-Linux-x86_64.sh
 sudo bash ~/Downloads/Miniconda3-latest-Linux-x86_64.sh
 rm ~/Downloads/Miniconda3-latest-Linux-x86_64.sh
@@ -127,8 +127,8 @@ conda update conda
 
 ## Test CUDA on Pytorch within a virtual conda environment
 
-### Create Miniconda virtual environment and activate it
-```shell
+### Create a Miniconda virtual environment and activate it
+``` shell
 conda info --env
 conda create --name env_torch
 conda activate env_torch
@@ -140,13 +140,13 @@ Interested readers may read about channel priority by running the following comm
 conda config --describe channel_priority
 ```
 
-### Install pytorch
-```shell
+### Install PyTorch
+``` shell
 conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia
 ```
 
-### Open Python kernel in VSCODE and execute a test
-```python
+### Open the Python kernel and execute the following
+``` python
 import torch
 print(torch.cuda.is_available()) # should be True
 
@@ -154,7 +154,7 @@ t = torch.rand(10, 10).cuda()
 print(t.device) # should be CUDA
 ```
 ### Optional Installations
-Though we are done with necessary installations, but some users might like installing following modules
-```shell
+Though we are done with the necessary installations, some users might like installing the following modules
+``` shell
 
 ```

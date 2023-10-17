@@ -145,7 +145,7 @@ conda config --describe channel_priority
 conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia
 ```
 
-### Open the Python kernel and execute the following
+### Open the Python kernel and execute the following to test your installation
 ``` python
 import torch
 print(torch.cuda.is_available()) # should be True

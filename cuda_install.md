@@ -178,6 +178,7 @@ In case you are expected to work on a single project that uses libraries designe
 ``` shell
 conda deactivate
 conda create --name env_mix --clone env_torch
+conda info --env # Check the newly created environment
 conda activate env_mix
 conda install -c anaconda pip
 ```
@@ -194,8 +195,10 @@ python -m pip install PACKAGE_NAME
 We installed the following packages as per our needs.
 
 ``` shell
-conda install
-python -m pip install
+python -m pip install opencv-python
+python -m pip install grad-cam
+conda update --all
+
 ```
 
 

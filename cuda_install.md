@@ -68,17 +68,18 @@ nvcc --version
 
 ### Install cuDNN
 ```shell
-sudo apt install ./<filename.deb>
-sudo cp /var/cudnn-<something>.gpg /usr/share/keyrings/
+cd ~/Downloads
+sudo apt install ./cuda-repo-ubuntu2204-12-2-local_12.2.2-535.104.05-1_amd64.deb
+sudo cp /var/cudnn-local-repo-ubuntu2204-8.9.5.29/cudnn-local-275FA572-keyring.gpg /usr/share/keyrings/
 ```
 
 My cuDNN version is 8, adapt the following to your version:
 
 ```shell
 sudo apt update
-sudo apt install libcudnn8
-sudo apt install libcudnn8-dev
-sudo apt install libcudnn8-samples
+sudo apt install /var/cudnn-local-repo-ubuntu2204-8.9.5.29/libcudnn8_8.9.5.29-1+cuda12.2_amd64.deb
+sudo apt install /var/cudnn-local-repo-ubuntu2204-8.9.5.29/libcudnn8-dev_8.9.5.29-1+cuda12.2_amd64.deb
+sudo apt install /var/cudnn-local-repo-ubuntu2204-8.9.5.29/libcudnn8-samples_8.9.5.29-1+cuda12.2_amd64.deb
 ```
 
 ## Test CUDA on Pytorch

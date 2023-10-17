@@ -172,6 +172,15 @@ python -m pip install PACKAGE_NAME # install package with locally install packag
 ```
 In our case, we successfully installed all packages but lpips with conda package manager.
 
+## Mix Environment: Advanced
+In case you are expected to work on a single project that uses libraries designed for frameworks other than PyTorch (e.g. scikit-learn, keras), we recommend creating a new clone of env_torch and installing extra packages in a new environment specially designed to work on advanced projects.
+
+``` shell
+conda deactivate
+conda create --name env_mix --clone env_torch
+conda activate env_mix
+conda install -c anaconda pip
+```
 
 
 

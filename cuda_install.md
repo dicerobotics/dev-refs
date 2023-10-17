@@ -164,7 +164,7 @@ conda install -c conda-forge lpips
 conda install -c anaconda scikit-image
 
 ```
-In case you can't install optional packages using conda install because of long time solving environments. You might consider install pip locally and install packages using locally installed version of pip.
+In case you can't install optional packages using conda because of the long time for solving environments. You might consider install pip locally and install packages using locally installed version of pip.
 ``` shell
 conda install -c anaconda pip
 which -a pip # Used to see all installed version of a package pip

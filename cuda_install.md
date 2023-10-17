@@ -181,6 +181,23 @@ conda create --name env_mix --clone env_torch
 conda activate env_mix
 conda install -c anaconda pip
 ```
+Now you may use the following commands to install new packages (as per your need) in a newly generated virtual environment.
+
+``` shell
+conda install -c CHANNAL_NAME PACKAGE_NAME
+```
+or
+``` shell
+python -m pip install PACKAGE_NAME
+```
+
+We installed the following packages as per our needs.
+
+``` shell
+conda install
+python -m pip install
+```
+
 
 
 

@@ -64,7 +64,7 @@ export "PATH=/usr/local/cuda/bin:$PATH"
 nvcc --version
 ```
 
-### export path to the .bashrc file
+### Add path to the .bashrc file
 You need to edit .bashrc file with administrator privileges so you need not to export local cuda path manually everytime you start terminal.
 Please add following line in .bashrc file
 

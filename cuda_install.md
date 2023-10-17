@@ -132,6 +132,12 @@ conda update conda
 conda info --env
 conda create --name env_torch
 conda activate env_torch
+conda config --append channels conda-forge # adds the new channel to the bottom, making it the lowest priority
+conda config --append channels nvidia
+```
+Interested readers may read about channel priority by running the following command
+``` shell
+conda config --describe channel_priority
 ```
 
 ### Install pytorch
@@ -146,4 +152,9 @@ print(torch.cuda.is_available()) # should be True
 
 t = torch.rand(10, 10).cuda()
 print(t.device) # should be CUDA
+```
+### Optional Installations
+Though we are done with necessary installations, but some users might like installing following modules
+```shell
+
 ```

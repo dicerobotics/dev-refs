@@ -103,7 +103,7 @@ sudo apt install /var/cudnn-local-repo-ubuntu2204-8.9.5.29/libcudnn8-dev_8.9.5.2
 sudo apt install /var/cudnn-local-repo-ubuntu2204-8.9.5.29/libcudnn8-samples_8.9.5.29-1+cuda12.2_amd64.deb
 ```
 
-## Setup Workspace Environment
+## Setup Personal Workspace
 
 ### Install VS Code
 ``` shell
@@ -139,8 +139,6 @@ Interested readers may read about channel priority by running the following comm
 ``` shell
 conda config --describe channel_priority
 ```
-
-## Install and Test Pytorch within a virtual Miniconda environment
 
 ### Install PyTorch
 ``` shell

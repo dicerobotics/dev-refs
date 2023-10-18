@@ -105,6 +105,11 @@ sudo apt install /var/cudnn-local-repo-ubuntu2204-8.9.5.29/libcudnn8-samples_8.9
 
 ## Setup Personal Workspace
 
+### install Git
+``` shell
+sudo apt install git
+```
+
 ### Install VS Code
 ``` shell
 sudo dpkg -i ./Downloads/code_1.83.1-1696982868_amd64.deb 

@@ -1,4 +1,4 @@
-# How to install CUDA, cuDNN, VSCode, Miniconda, Pytorch on Ubuntu 22.04
+# Instructions to install CUDA, cuDNN, VSCode, Miniconda, Pytorch on Ubuntu 22.04
 
 ## Install NVIDIA drivers
 

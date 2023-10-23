@@ -21,5 +21,5 @@ sudo apt install gnome-tweaks
 ``` shell
 pip install nbconvert # Nbconvert is part of the Jupyter ecosystem
 sudo apt-get install pandoc # For converting markdown to formats other than HTML
-sudo apt-get install texlive-xetex texlive-fonts-recommended texlive-plain-generic # TexLive Support for direct PDF Export Support
+sudo apt-get install texlive-xetex texlive-fonts-recommended texlive-plain-generic # TexLive for direct PDF Export Support
 ```

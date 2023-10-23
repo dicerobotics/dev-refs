@@ -15,11 +15,3 @@ The best strategy to manage keyboard and to customize is as per your requirement
 sudo add-apt-repository universe #Add's universe repository for updates
 sudo apt install gnome-tweaks
 ```
-
-### Jupyter Ecosystem Support
-
-``` shell
-pip install nbconvert # Nbconvert is part of the Jupyter ecosystem
-sudo apt-get install pandoc # For converting markdown to formats other than HTML
-sudo apt-get install texlive-xetex texlive-fonts-recommended texlive-plain-generic # TexLive for direct PDF Export Support
-```

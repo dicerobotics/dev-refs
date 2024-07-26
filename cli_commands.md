@@ -35,9 +35,18 @@ docker run <conatiner_name> # running in attached mode
 docker run -d <container_name> # running in detached mode
 docker attach <id> # attach an initially detached container, first few characters of the ID are sufficient as long as they are distinct
 ```
-Run-tag
+Run-tag (Run a specific version of a container)
 ``` shell
-docker run redis:4.0 # run redis version 4.0
+docker run <container_name>:4.0 # run a container with version 4.0
 ```
-##
+Run - STDIN (By default docker doesn't run in the standard input mode)
+We need to run it in an interactive mode with an -i tag to operate in a standard input mode.
+
+``` shell
+docker run -i <dockerized-app>  # work in an iterative mode
+docker run -it <dockerized-app> # work in an iterative mode using an attached pseudo-terminal
+```
+
+Run - PORT mapping
+
 

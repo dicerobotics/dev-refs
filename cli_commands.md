@@ -68,12 +68,12 @@ Run - Volume Mapping
 When we remove a container, all the data inside the container gets deleted. To avoid this problem, we may map the container folder/volume to some external volume.
 ``` shell
 docker run mysql # Run without volume mapping
-docker stop MySQL
+docker stop mysql
 docker rm mysql # data gets deleted
 
 docker run -v <external_dir>:<internal_dir> <container_name>
 docker run -v /opt/datadir:/var/lib/mysql mysql # running container mysql with volume mapping
-docker stop MySQL
+docker stop mysql
 docker rm mysql # container is deleted but data is preserved in /opt/datadir
 ```
 

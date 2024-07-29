@@ -1,4 +1,4 @@
-# Basic commands for git
+# Basic git commands
 Reference: https://education.github.com/git-cheat-sheet-education.pdf
 ### Setup
 Configuring user information used across all local repositories

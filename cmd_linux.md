@@ -3,8 +3,8 @@
 
 ## Development
 Source: "Linux for Developers" course on Coursera. 
-Caution: Please be careful if you purchase above course on coursera. You can't access course material after your paid subscription ends even if you complete the course and achieve certificate.
-This files is not an exact copy of the above course. It is made for personal use and will be updated on continuous basis.
+Caution: Please be careful if you purchase the above course on Coursera. You can't access the course material after your paid subscription ends even if you complete the course and achieve the certificate.
+This file is not an exact copy of the above course. It is made for personal use and will be updated continuously.
 
 #### Linux and operating system
 - Kernal vs. operating system tools
@@ -107,18 +107,10 @@ This files is not an exact copy of the above course. It is made for personal use
 - Creating, modifying, and removing user accounts
 - Files, users, and permissions
 - root (super) user, su, and sudo
-- 
 
-
-< %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% >
 ## Linux Tools
 Source: "Linux Tools for Developers" course on Coursera. 
-Caution: Please be careful if you purchase above course on coursera. You can't access course material after your paid subscription ends even if you complete the course and achieve certificate. I feel cheated after discoving this after completing a paid course.
-Note: This files is not an exact copy of the above course. It is made for personal use and will be updated on continuous basis.
+Caution: Please be careful if you purchase the above course on Coursera. You can't access course material after your paid subscription ends even if you complete the course and achieve the certificate.
+Note: This file is not an exact copy of the above course. It is made for personal use and will be updated continuously.
 
 
-
-
-
-
-- 

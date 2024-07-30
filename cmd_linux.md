@@ -110,7 +110,7 @@ This files is not an exact copy of the above course. It is made for personal use
 - 
 
 
-[comment]: <> %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+< %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% >
 ## Linux Tools
 Source: "Linux Tools for Developers" course on Coursera. 
 Caution: Please be careful if you purchase above course on coursera. You can't access course material after your paid subscription ends even if you complete the course and achieve certificate. I feel cheated after discoving this after completing a paid course.

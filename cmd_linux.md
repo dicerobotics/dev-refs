@@ -113,4 +113,68 @@ Source: "Linux Tools for Developers" course on Coursera.
 Caution: Please be careful if you purchase the above course on Coursera. You can't access course material after your paid subscription ends even if you complete the course and achieve the certificate.
 Note: This file is not an exact copy of the above course. It is made for personal use and will be updated continuously.
 
+#### Essential command line tools
+- Tools used to list, create, delete, and rename files and directories
+- Finding files: find and locate
+- grep command
+- sed command
+
+#### File and text manipulation tools
+- cat
+- using cat interactively
+- echo
+- working with large files
+- head
+- tail
+- viewing compressed files
+- Introduction to sed and awk
+- File manipulation utilities
+- sort
+- uniq
+- paste, join, and split
+- grep
+- strig
+- tr
+- tee
+- wc
+- cut
+
+#### Bash scripting
+- Script bash
+- Conditions
+- Loops
+- Functions
+- Creating simple bash shell script
+- A simple backup utility
+  
+#### File and filesystem
+- Types of files
+- Permission and access rights
+- Changing permission and ownership
+- umask
+- chmod
+- setuid
+
+#### Linux Filesystems
+- Filesystems and the VFS
+- Mounting filesystems
+- RAID and LVM
+- Loopback filesystem
+
+#### Compiling, Linking, and Libraries
+- gcc and other compilers
+- Major gcc options
+- Static Libraries
+- Shared Libraries
+- Linking to libraries
+- Debugging with gdb
+
+#### Java Installation and Environment
+- Package management
+- RPM Creation
+- The RPM spec file
+- RPM dependencies
+- Debian Package Creation Workflow
+- Building RPM
+- Building Debian package from source
 

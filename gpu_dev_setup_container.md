@@ -2,29 +2,44 @@
 We assume the system has NVIDIA GPU installed.
 
 ## Install Docker
+
+### dependencies
 ''' shell
-# dependencies
 sudo apt-get install \
     apt-transport-https \
     ca-certificates \
     curl \
     gnupg-agent \
     software-properties-common
-# add docker official GPG key
+'''
+### add docker official GPG key
+''' shell
 sudo mkdir -p /etc/apt/keyrings
  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg-
-# then add their repo
+'''
+### then add their repo
+''' shell
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
+'''
+
 # finally install it
+''' shell
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+'''
+
 # create the docker group
+''' shell
 sudo groupadd docker
+'''
+
 # add your user to the docker group
+''' shell
 sudo usermod -aG docker $USER
 '''
+
 ## Test Docker
 ''' shell
 docker run --rm hello-world

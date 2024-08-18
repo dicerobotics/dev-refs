@@ -137,123 +137,86 @@ And you should see the correct output from nvidia-smi inside the container. In m
 
 
 
+## Run GPU Accelerated Containers with PyTorch
+We all know and love PyTorch. For the ones who have never used it, PyTorch is an open source machine learning python framework, widely used in the industry and academia.
 
+Nvidia provides different docker images with different cuda, cudnn and Pytorch versions. The official catalog is here. They are part of the NGC Catalog, a curated set of GPU-optimized software for AI, HPC, and Visualization containers.
 
+To decide which version you want to use you can head over to the releases list. We will use the latest one, 22.07
 
+Additional information about the catalog can be found in the official guide
 
+Nvidia also provides documentation showcasing how to run these containers.
 
+Okay, let's run it!
 
-
-## Setup Personal Workspace
-
-### install Git
 ``` shell
-sudo apt install git
+docker run --gpus all -it --rm nvcr.io/nvidia/pytorch:22.07-py3
 ```
 
-### Install VS Code
-``` shell
-sudo dpkg -i ./Downloads/code_1.83.1-1696982868_amd64.deb 
-rm ./Downloads/code_1.83.1-1696982868_amd64.deb
-```
-### Install pip and check installation directory
-``` shell
-sudo apt install python3-pip
-which -a pip
-```
+-it means to run the container in interactive mode, so attached to the current shell. --rm tells docker to destroy the container after we are done with it.
 
-### Install Miniconda
-Download the Miniconda installer from the web. https://docs.conda.io/projects/miniconda/en/latest/index.html
-``` shell
-sha256sum ~/Downloads/Miniconda3-latest-Linux-x86_64.sh
-sudo bash ~/Downloads/Miniconda3-latest-Linux-x86_64.sh
-rm ~/Downloads/Miniconda3-latest-Linux-x86_64.sh
-conda config --set auto_activate_base false
-conda deactivate
-conda update conda
-```
+After pulling the image, docker will run the container and you will have access to bash from inside it.
 
-### Create a Miniconda virtual environment and activate it
-``` shell
-conda info --env
-conda create --name env_torch
-conda activate env_torch
-conda config --append channels conda-forge # adds the new channel to the bottom, making it the lowest priority
-conda config --append channels annaconda
-conda config --append channels nvidia
-conda config --append channels pytorch
-```
-Interested readers may read about channel priority by running the following command
-``` shell
-conda config --describe channel_priority
-```
+Nvidia is suggesting running the container with additional flags to improve performance, let's kill the container (ctrl + c) and re-run it with the suggested flags.
 
-### Install PyTorch
 ``` shell
-conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia
+docker run --gpus all --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 -it --rm nvcr.io/nvidia/pytorch:22.07-py3
 ```
+We can check everything is working by hopping inside the python console:
 
-### Open the Python kernel and execute the following to test your installation
 ``` python
 import torch
-print(torch.cuda.is_available()) # should be True
+torch.cuda.is_available()
+torch.backends.cudnn.version()
+```
+We can see cuda is there and the cudnn version is the correct one.
 
-t = torch.rand(10, 10).cuda()
-print(t.device) # should be CUDA
-```
-### Optional Installations
-Though we are done with the necessary installations, some users might like installing the following modules. Before you install the following, make sure you are in miniconda virtual environment of your choice. If are not, activate it by typing "conda activate ENV_NAME". In my case, my ENV_NAME is env_torch.
-``` shell
-conda install -c conda-forge tqdm
-conda install -c conda-forge matplotlib
-conda install -c anaconda scipy
-conda install -c anaconda seaborn
-conda install -c conda-forge lpips # Takes long time
-conda install -c anaconda scikit-image
+But, why did we need the additional flags? Let's decompose them:
 
-```
-In case you can't install optional packages using conda because of the long time for solving environments. You might consider install pip locally and install packages using locally installed version of pip.
-``` shell
-conda install -c anaconda pip
-which -a pip # Used to see all installed versions of a package pip
-python -m pip install PACKAGE_NAME # install package with locally install package manager pip
-```
-In our case, we successfully installed all packages but lpips with conda package manager. All conda packages may alternatively be installed with single command.
-``` shell
-condal insall tqdm matplotlib scipy seaborn scikit-image -c conda-forge -c anaconda
-```
+--ipc IPC (POSIX/SysV IPC) provides a way to speed up inter-process communication. Since PyTorch Dataloaders with num_workers > 1 will use different processes, we need to set it to host.
+
+--ulimit memlock=1 calls the ulimit linux command and set memlock=-1 means no limit for memory lock.
+
+--ulimit stack=67108864 this sets the stack size and it's specific to my host machine.
 
 
-## Mix Environment: Advanced
-In case you are expected to work on a single project that uses libraries designed for frameworks other than PyTorch (e.g. scikit-learn, keras), we recommend creating a new clone of env_torch and installing extra packages in a new environment specially designed to work on advanced projects.
+# Running Code
+We have our shiny new Nvidia container, but how can we run code from inside it?
+
+Let's see an example. Assuming you have a folder project with a file train.py.
+
+For simplicity, train.py contains the famous mnist example from pytorch.
+
+You can make project available to your container by:
 
 ``` shell
-conda deactivate
-conda create --name env_mix --clone env_torch
-conda info --env # Check the newly created environment
-conda activate env_mix
-conda install -c anaconda pip
+docker run ... -v /<your_path>/project:/workspace/project ...
 ```
-Now you may use the following commands to install new packages (as per your need) in a newly generated virtual environment.
+
+Remember that volumes need an absolute path.
+
+-v creates a volume mapping from the host to the container. By default, the Nvidia container uses the /workspace directory. Let's see an example. Assuming you have a folder project with a file train.py.
+
+Putting everything together:
 
 ``` shell
-conda install -c CHANNAL_NAME PACKAGE_NAME
+docker run --gpus all --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 -it -v $(pwd)/project:/workspace/project --rm nvcr.io/nvidia/pytorch:22.07-py3
 ```
-or
+
+You will see your code inside /workspace/project. We can directly run the code by calling python
 ``` shell
-python -m pip install PACKAGE_NAME
+docker run --gpus all --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 -it -v $(pwd)/project:/workspace/project --rm nvcr.io/nvidia/pytorch:22.07-py3 python ./project/train.py
 ```
 
-We installed the following packages as per our needs.
+You'll see something like:
 
-``` shell
-python -m pip install opencv-python
-python -m pip install grad-cam
-conda install -c conda-forge datasets
-conda install -c conda-forge transformers
 ```
-
-
-
+Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz
+...
+Extracting ../data/MNIST/raw/t10k-labels-idx1-ubyte.gz to ../data/MNIST/raw
+Train Epoch: 1 [0/60000 (0%)]   Loss: 2.283439
+Train Epoch: 1 [640/60000 (1%)] Loss: 1.827201
+```
 
 

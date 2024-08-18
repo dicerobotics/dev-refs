@@ -1,4 +1,4 @@
-# System Setup with CUDA, cuDNN, VSCode, Miniconda, Pytorch on Ubuntu 22.04
+# System Setup for containerized development on Ubuntu 22.04
 We assume the system has NVIDIA GPU installed.
 
 ## Install Docker

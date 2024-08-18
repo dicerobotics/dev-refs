@@ -181,7 +181,7 @@ But, why did we need the additional flags? Let's decompose them:
 --ulimit stack=67108864 this sets the stack size and it's specific to my host machine.
 
 
-# Running Code
+## Running Code within container
 We have our shiny new Nvidia container, but how can we run code from inside it?
 
 Let's see an example. Assuming you have a folder project with a file train.py.
@@ -219,4 +219,44 @@ Train Epoch: 1 [0/60000 (0%)]   Loss: 2.283439
 Train Epoch: 1 [640/60000 (1%)] Loss: 1.827201
 ```
 
+## Run code within the Container with VS Code
+We have seen how to run our train.py from the terminal, but that's not a good development environment, is it? Well, we can use VS Code directly from within the container! Let's see how.
+
+First of all, we need to install it. You can follow the official installation guide.
+
+Next, you need to install the remote container extension. It allows us to run VS Code from inside any container.
+
+Ok, we are almost there. Let's fire up our Nvidia container and connect to it with VS Code. At this point, we may want to run a container without --rm to persist data, e.g. python modules.
+
+``` shell
+docker run --gpus all --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 -it -v $(pwd)/project:/workspace/project nvcr.io/nvidia/pytorch:22.07-py3
+```
+Head over to the docker extension panel (whale on the left), right-click on the running container, and select "Attach Visual Studio Code". VS Code will attach itself to your container and a new window will popup from which you can code as you do normally. The following video shows this process.
+
+
+## Deployment with Your Machine Learning Environment
+Since we are here, we can talk about deployment. So, at some point you may want to place your code somewhere, e.g. a server. This is very easy to do for us, since we already know our train.py will work on nvcr.io/nvidia/pytorch:22.07-py3 image. So, we can create a Dockerfile from that base image and add everything we need.
+
+```
+FROM  nvcr.io/nvidia/pytorch:22.07-py3
+# maybe we also have a requirements.txt file
+# COPY ./requirements.txt /workspace/requirements.txt
+# RUN pip install -r requirements.txt
+COPY ./project /workspace/project
+ENTRYPOINT ["python"]
+CMD ["/workspace/project/train.py"]
+```
+
+Time to build it:
+
+```
+docker run --gpus all --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 -it pytorch-project
+```
+To run it:
+```
+docker run --gpus all --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 -it pytorch-project
+```
+And the model will start training.
+
+We completely skip the painful step to make sure our code works in a specific container, since we develop directly inside it!
 

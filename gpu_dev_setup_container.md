@@ -19,6 +19,8 @@ Not only will we ensure all the correct versions of cuda and cudnn are there, we
 Well, today we will see how to develop machine learning models like a pro with Nvidia + Docker + VS Code + PyTorch. Let's dive into it!
 
 ## Install Docker
+The first step is to install Docker. In a nutshell, docker is an open source platform for building, deploying and managing containerized applications. You can see all the installation options from the official website, we will install everything on Ubuntu 20.04. We need the engine, not Docker desktop.
+
 ``` shell
 # dependencies
 sudo apt-get install \
@@ -43,12 +45,15 @@ sudo groupadd docker
 sudo usermod -aG docker $USER
 ```
 
-## Test Docker
+You can test your docker installation by running the hello-world container:
 ``` shell
 docker run --rm hello-world
 ```
 The --rm flag tells docker to remove the container once done.
-
+``` shell
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+```
 
 
 
@@ -66,7 +71,7 @@ chmod +x ./NVIDIA-Linux-x86_64-515.57.run # the name may change from yours
 sudo /NVIDIA-Linux-x86_64-515.57.run
 ```
 Follow the installation steps. Reboot and you should be able to run nvidia-smi, the output should look similar to:
-
+``` shell
 +-----------------------------------------------------------------------------+
 | NVIDIA-SMI 515.57       Driver Version: 515.57       CUDA Version: 11.7     |
 |-------------------------------+----------------------+----------------------+
@@ -78,7 +83,7 @@ Follow the installation steps. Reboot and you should be able to run nvidia-smi, 
 |  0%   38C    P8    15W / 350W |   2759MiB / 24576MiB |      0%      Default |
 |                               |                      |                  N/A |
 +-------------------------------+----------------------+----------------------+
-
+```
 
 ## Install NVIDIA Container Toolkit
 Super! Unfortunately, Docker has no idea how to use your GPU(s), we need the NVIDIA Container Toolkit. It allows users to build and run GPU-accelerated containers.
@@ -128,6 +133,9 @@ And you should see the correct output from nvidia-smi inside the container. In m
 ```
 
 --gpus is used to specify which GPU the container should see, all means "all of them". If you want to expose only one you can pass its id --gpus 1. You can also specify a list of GPUs to use, --gpus "device=1,2"
+
+
+
 
 
 

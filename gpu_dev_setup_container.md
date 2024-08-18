@@ -1,5 +1,6 @@
 # System Setup for containerized development on Ubuntu 22.04
 We assume the system has NVIDIA GPU installed.
+Source: https://blog.roboflow.com/nvidia-docker-vscode-pytorch/
 
 
 Everybody hates installing NVIDIA drivers, you have to manually download them, then install cuda, be sure to have the correct version of everything, and change them from time to time to be updated.

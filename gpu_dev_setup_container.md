@@ -18,21 +18,18 @@ echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
-
 # finally install it
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
-
 # create the docker group
 sudo groupadd docker
-
 # add your user to the docker group
 sudo usermod -aG docker $USER
 ```
 
 ## Test Docker
-''' shell
+``` shell
 docker run --rm hello-world
-'''
+```
 The --rm flag tells docker to remove the container once done.
 
 
@@ -42,15 +39,15 @@ The --rm flag tells docker to remove the container once done.
 Without drivers, your super cool brand-new Nvidia GPU won't work. From Ubuntu 20.02, the Nvidia drivers can be installed in the Ubuntu OS installation process. However, you may want to be in total control of what goes inside your machine.
 To manually install the drivers, go to the official driver page. In my case, RTX 3090 and Linux 64bit. If you have my same system, you can run the following command:
 
-''' shell
+``` shell
 wget "https://us.download.nvidia.com/XFree86/Linux-x86_64/515.57/NVIDIA-Linux-x86_64-515.57.run"
-'''
+```
 Once you have downloaded it, you can run the installer:
-''' shell
+``` shell
 # cd to the folder containing the drivers
 chmod +x ./NVIDIA-Linux-x86_64-515.57.run # the name may change from yours
 sudo /NVIDIA-Linux-x86_64-515.57.run
-'''
+```
 Follow the installation steps. Reboot and you should be able to run nvidia-smi, the output should look similar to:
 
 +-----------------------------------------------------------------------------+
@@ -70,28 +67,28 @@ Follow the installation steps. Reboot and you should be able to run nvidia-smi, 
 Super! Unfortunately, Docker has no idea how to use your GPU(s), we need the NVIDIA Container Toolkit. It allows users to build and run GPU-accelerated containers.
 To install it (on Ubuntu, other installations can be found on the official guide):
 
-''' shell
+``` shell
 distribution=$(. /etc/os-release;echo $ID$VERSION_ID) \
       && curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg \
       && curl -s -L https://nvidia.github.io/libnvidia-container/$distribution/libnvidia-container.list | \
             sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | \
             sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
-'''
+```
 
 Then
 
-''' shell
+``` shell
 sudo apt-get update
 sudo apt-get install -y nvidia-docker2
 sudo systemctl restart docker
-'''
+```
 Let's test it:
-''' shell
+``` shell
 docker run --rm --gpus all nvidia/cuda:11.0.3-base-ubuntu20.04 nvidia-smi
-'''
+```
 And you should see the correct output from nvidia-smi inside the container. In my case:
 
-''' shell
+``` shell
 +-----------------------------------------------------------------------------+
 | NVIDIA-SMI 515.57       Driver Version: 515.57       CUDA Version: 11.7     |
 |-------------------------------+----------------------+----------------------+
@@ -111,7 +108,7 @@ And you should see the correct output from nvidia-smi inside the container. In m
 |=============================================================================|
 +-----------------------------------------------------------------------------+
 
-'''
+```
 
 --gpus is used to specify which GPU the container should see, all means "all of them". If you want to expose only one you can pass its id --gpus 1. You can also specify a list of GPUs to use, --gpus "device=1,2"
 

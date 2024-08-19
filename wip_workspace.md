@@ -202,15 +202,15 @@ And you should see the correct output from nvidia-smi inside the container. In m
 
 ## Run GPU Accelerated Containers with PyTorch
 
-- Nvidia provides Docker [images](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch?ref=blog.roboflow.com) with different versions of cuda, cudnn, and Pytorch (see [Framework Support Matrix](https://docs.nvidia.com/deeplearning/frameworks/support-matrix/index.html)). They are part of the [NGC Catalog](https://docs.nvidia.com/ngc/gpu-cloud/ngc-catalog-user-guide/index.html?ref=blog.roboflow.com#what-is-nvidia-ngc), a curated set of GPU-optimized software for AI, HPC, and Visualization containers.
+- Nvidia provides Docker [images](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch?ref=blog.roboflow.com) with different versions of cuda, cuDNN, and Pytorch. For a complete view of the supported software and specific versions that are packaged with the frameworks based on the container image, see the [Frameworks Support Matrix](https://docs.nvidia.com/deeplearning/frameworks/support-matrix/index.html). They are part of the [NGC Catalog](https://docs.nvidia.com/ngc/gpu-cloud/ngc-catalog-user-guide/index.html?ref=blog.roboflow.com#what-is-nvidia-ngc), a curated set of GPU-optimized software for AI, HPC, and Visualization containers.
 
-To decide which version you want to use you can head over to the releases list. We will use the latest one, 22.07
+To decide which version you want to use you can head over to the [releases list](https://docs.nvidia.com/deeplearning/frameworks/pytorch-release-notes/index.html?ref=blog.roboflow.com).
 
 Additional information about the catalog can be found in the official guide
 
 Nvidia also provides documentation showcasing how to run these containers.
 
-Okay, let's run it!
+
 
 ``` shell
 docker run --gpus all -it --rm nvcr.io/nvidia/pytorch:22.07-py3

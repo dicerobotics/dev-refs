@@ -37,7 +37,7 @@ sudo rm -rf /var/lib/docker
 sudo rm -rf /var/lib/containerd
 ```
 
-__Docker's `apt` repository setup__
+__Set up Docker's `apt` repository__
 
 ``` shell
 # Add Docker's official GPG key:
@@ -54,6 +54,27 @@ echo \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
 ```
+__Install the Docker Packages__ 
+  - __Latest:__
+``` shell
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+  - __Specific Version:__
+``` shell
+# List the available versions:
+apt-cache madison docker-ce | awk '{ print $3 }'
+
+5:27.1.1-1~ubuntu.24.04~noble
+5:27.1.0-1~ubuntu.24.04~noble
+...
+```
+Select the desired version and install it:
+``` shell
+VERSION_STRING=5:27.1.1-1~ubuntu.24.04~noble
+sudo apt-get install docker-ce=$VERSION_STRING docker-ce-cli=$VERSION_STRING containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
+
 
 __Verify Docker Installation__
 You can test your docker installation by running the hello-world container:

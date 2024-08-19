@@ -280,7 +280,11 @@ Train Epoch: 1 [640/60000 (1%)] Loss: 1.827201
 ## Run code (using VS Code)
 
 We can also use VS Code to run code directly from within the container.
+
 __Install VS Code__
+First of all, we need to install it. You can follow the [official installation guide](https://code.visualstudio.com/docs/setup/linux?ref=blog.roboflow.com).
+ 
+Next, We need to install the [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers&ref=blog.roboflow.com). It allows us to run VS Code from inside any container.
 
 Add following Extensions
 - Docker
@@ -296,16 +300,13 @@ Add following Extensions
 - Jupyter Slide Show
 - Github Actions
 
-First of all, we need to install it. You can follow the official installation guide.
 
-Next, you need to install the remote container extension. It allows us to run VS Code from inside any container.
-
-Ok, we are almost there. Let's fire up our Nvidia container and connect to it with VS Code. At this point, we may want to run a container without --rm to persist data, e.g. python modules.
+Now we can fire up our Nvidia container and connect to it with VS Code. At this point, we may want to run a container without `--rm` to persist data, e.g. python modules.
 
 ``` shell
 docker run --gpus all --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 -it -v $(pwd)/project:/workspace/project nvcr.io/nvidia/pytorch:23.08-py3
 ```
-Head over to the docker extension panel (whale on the left), right-click on the running container, and select "Attach Visual Studio Code". VS Code will attach itself to your container and a new window will popup from which you can code as you do normally. The following video shows this process.
+Head over to the docker extension panel (whale on the left), right-click on the running container, and select "Attach Visual Studio Code". VS Code will attach itself to your container and a new window will pop up from which you can code as you do normally.
 
 
 ## Deployment with Your Machine Learning Environment

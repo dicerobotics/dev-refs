@@ -17,8 +17,9 @@ __Recommendations__
 
 
 ## Installations
-__Docker (Engine)__\n
-The first step is to install Docker. In a nutshell, docker is an open source platform for building, deploying and managing containerized applications. You can see all the installation options from the official website, we will install everything on Ubuntu 20.04. We need the engine, not Docker desktop.
+[__Docker (Engine)__](https://www.docker.com/)
+
+- We need the engine, not Docker desktop
 
 ``` shell
 # dependencies

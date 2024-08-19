@@ -167,13 +167,6 @@ sudo systemctl restart docker
 The `nvidia-ctk` command modifies the `/etc/docker/daemon.json` file on the host. The file is updated so that Docker can use the NVIDIA Container Runtime.
 
 
-__Rootless Mode__
-``` shell
-# Configure the container runtime by using the nvidia-ctk command
-nvidia-ctk runtime configure --runtime=docker --config=$HOME/.config/docker/daemon.json
-# Restart the Rootless Docker daemon
-systemctl --user restart docker
-```
 
 __Verfiy Installation__
 ``` shell

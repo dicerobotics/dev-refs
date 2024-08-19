@@ -309,7 +309,7 @@ docker run --gpus all --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 -it
 Head over to the docker extension panel (whale on the left), right-click on the running container, and select "Attach Visual Studio Code". VS Code will attach itself to your container and a new window will pop up from which you can code as you do normally.
 
 
-## Deployment with Your Machine Learning Environment
+## Deployment with Machine Learning Environment
 Since we are here, we can talk about deployment. So, at some point you may want to place your code somewhere, e.g. a server. This is very easy to do for us, since we already know our train.py will work on nvcr.io/nvidia/pytorch:23.08-py3 image. So, we can create a Dockerfile from that base image and add everything we need.
 
 ```

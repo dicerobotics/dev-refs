@@ -9,7 +9,7 @@ __Hardware__
 
 ## Install Operating Systems (OS)
 __Recommendations__
-- Configuration: Dual Drive Dual Boot (One drive connected at a time during installations)
+- Configuration: Dual Drive Dual Boot (One drive connected at a time during OS installation)
   - Virtual Machines (VM), Windows Subsystem for Linux (WSL), etc. not recommended
 - Linux: Ubuntu 22.04 LTS (Jammy Jellyfish)
 - Window: Windows 11

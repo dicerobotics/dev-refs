@@ -98,8 +98,6 @@ sudo groupadd docker
 sudo usermod -aG docker $USER
 ```
 
-
-
 ## Install NVIDIA drivers
 From Ubuntu 20.02, the Nvidia drivers can be installed in the Ubuntu OS installation process using `sudo ubuntu-drivers install` or `sudo ubuntu-drivers install nvidia:535`. However, We recommend installing it manually to control (fully) what goes inside the machine. To manually install the drivers, go to the [official driver page](https://www.nvidia.com/download/index.aspx?ref=blog.roboflow.com) for NVIDIA GPUs and download the relevant driver package. The following instructions are for __NVIDIA GeForce RTX 4070__ and __Linux 64-bit__.
 
@@ -129,11 +127,18 @@ Mon Aug 19 14:48:06 2024
 +-----------------------------------------+----------------------+----------------------+
 ```
 
+## CUDA, cuDNN for Machine Learning (Not required)
+- It's recommended to use isolation techniques (e.g. Virtual Machines, Packaging and environments with conda, containerization with Docker, etc.) for development.
+- We do not need to install CUDA and cuDNN on the local machine if we work under containerized development environments using Docker for NVIDIA GPUs.
+- We'll install __NVIDIA Container Toolkit__ instead and use container images provided by NVIDIA.
+- The container images provided by NVIDIA already contain CUDA and cuDNN libraries.
+
+
 ## Install NVIDIA Container Toolkit
-Super! Unfortunately, Docker has no idea how to use your GPU(s), we need the NVIDIA Container Toolkit. It allows users to build and run GPU-accelerated containers.
-To install it (on Ubuntu, other installations can be found on the official guide):
+It allows users to build and run GPU-accelerated containers.
 
 ``` shell
+# Configure the production repository:
 distribution=$(. /etc/os-release;echo $ID$VERSION_ID) \
       && curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg \
       && curl -s -L https://nvidia.github.io/libnvidia-container/$distribution/libnvidia-container.list | \
@@ -144,11 +149,17 @@ distribution=$(. /etc/os-release;echo $ID$VERSION_ID) \
 Then
 
 ``` shell
+# Update the packages list from the repository:
 sudo apt-get update
-sudo apt-get install -y nvidia-docker2
+
+# Install the NVIDIA Container Toolkit packages:
+sudo apt-get install -y nvidia-container-toolkit
+
+# Restart Docker
 sudo systemctl restart docker
 ```
-Let's test it:
+
+__Verfiy Installation__
 ``` shell
 docker run --rm --gpus all nvidia/cuda:11.0.3-base-ubuntu20.04 nvidia-smi
 ```

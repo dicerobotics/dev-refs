@@ -1,13 +1,13 @@
 # Development Workspace
 Source: https://blog.roboflow.com/nvidia-docker-vscode-pytorch/
 
-## Hardware
+__Hardware__
 - CPU: 
 - GPU: 
 - Memory: 
 - Storage: 
 
-## Operating Systems (OS)
+## Install Operating Systems (OS)
 __Recommendations__
 - Configuration: Dual Drive Dual Boot (One drive connected at a time during installations)
   - Virtual Machines (VM), Windows Subsystem for Linux (WSL), etc. not recommended
@@ -17,43 +17,75 @@ __Recommendations__
 - [Customize](ubuntu_custom.md) OS (optional)
 
 
-## Installations
-[__Docker (Engine)__](https://www.docker.com/)
+## Install [Docker (Engine)](https://docs.docker.com/engine/install/ubuntu/)
+- We need the Docker Engine, not the Docker Desktop
+- Distro maintainers provide unofficial distributions of Docker packages in APT. We must uninstall these packages before we can install the official version of Docker Engine. The unofficial packages to uninstall are 'docker.io', 'docker-compose', 'docker-compose-v2', 'docker-doc', and 'podman-docker'.
+- Docker Engine depends on 'containerd' and 'runc'. Docker Engine bundles these dependencies as one bundle in 'containerd.io'.
+- If the 'containerd' or 'runc' were installed previously, we need to uninstall them to avoid conflicts with the versions bundled with Docker Engine.
 
-- We need the engine, not Docker desktop
+__Uninstall conflicting packages__
 
 ``` shell
-# dependencies
+for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
+```
+'apt-get' might report that you have none of these packages installed.
+
+Images, containers, volumes, and networks stored in '/var/lib/docker/' aren't automatically removed when we uninstall Docker. For a clean installation, we suggest to clean up any existing data.
+
+```
+sudo rm -rf /var/lib/docker
+sudo rm -rf /var/lib/containerd
+```
+
+
+__Install Dependencies__ (If not installed already)
+``` shell
+# Dependencies
 sudo apt-get install \
     apt-transport-https \
     ca-certificates \
     curl \
     gnupg-agent \
     software-properties-common
-# add docker official GPG key
+```
+
+__Install Docker Engine__
+
+``` shell
+# Add Docker's official GPG key:
 sudo mkdir -p /etc/apt/keyrings
  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg-
-# then add their repo
+
+# Add the repository to Apt sources:
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
-# finally install it
+
+# Install the Docker Engine Packages
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
-# create the docker group
-sudo groupadd docker
-# add your user to the docker group
-sudo usermod -aG docker $USER
 ```
 
+__Verify Docker Installation__
 You can test your docker installation by running the hello-world container:
 ``` shell
-docker run --rm hello-world
+sudo docker run --rm hello-world
 ```
 The --rm flag tells docker to remove the container once done.
 ``` shell
 Hello from Docker!
 This message shows that your installation appears to be working correctly.
+```
+
+__Create Docker group__(to manage user access)
+
+
+``` shell
+# Create Docker group
+sudo groupadd docker
+
+# Add USER to the Docker group
+sudo usermod -aG docker $USER
 ```
 
 

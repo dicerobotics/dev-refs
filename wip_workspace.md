@@ -7,9 +7,10 @@ Source: https://blog.roboflow.com/nvidia-docker-vscode-pytorch/
 - Memory: 
 - Storage: 
 
-## Operating Systems)
+## Operating Systems (OS)
+__Recommendations__
 - Configuration: Dual Drive Dual Boot (One drive connected at a time during installations)
-  - VMs, WSL, etc. not recommended
+  - Virtual Machines (VM), Windows Subsystem for Linux (WSL), etc. not recommended
 - Linux: Ubuntu 22.04 LTS (Jammy Jellyfish)
 - Window: Windows 11
 - [Customize](ubuntu_custom.md) OS (optional)

@@ -4,7 +4,7 @@ Source: https://blog.roboflow.com/nvidia-docker-vscode-pytorch/
 
 ## Operating System Setup
 - Ubuntu 22.04 LTS (Jammy Jellyfish)
-- Use 'ubuntu_custom.md' for optional customizations
+- [Customize](ubuntu_custom.md) OS (optional)
 
 
 ## Install Docker

@@ -3,7 +3,7 @@ Source: https://blog.roboflow.com/nvidia-docker-vscode-pytorch/
 
 __Hardware__
 - CPU: 
-- GPU: 
+- GPU: NVIDIA GeForce RTX 4070
 - Memory: 
 - Storage: 
 
@@ -36,6 +36,7 @@ Images, containers, volumes, and networks stored in `/var/lib/docker/` aren't au
 sudo rm -rf /var/lib/docker
 sudo rm -rf /var/lib/containerd
 ```
+We have to delete any edited configuration files manually.
 
 __Set up Docker's `apt` repository__
 
@@ -100,30 +101,32 @@ sudo usermod -aG docker $USER
 
 
 ## Install NVIDIA drivers
-From Ubuntu 20.02, the Nvidia drivers can be installed in the Ubuntu OS installation process. However, We recommend installing it manually to control what goes inside the machine. To manually install the drivers, go to the [official driver page](https://www.nvidia.com/download/index.aspx?ref=blog.roboflow.com). The following instructions are for RTX 4070 and Linux 64bit.
+From Ubuntu 20.02, the Nvidia drivers can be installed in the Ubuntu OS installation process using `sudo ubuntu-drivers install` or `sudo ubuntu-drivers install nvidia:535`. However, We recommend installing it manually to control (fully) what goes inside the machine. To manually install the drivers, go to the [official driver page](https://www.nvidia.com/download/index.aspx?ref=blog.roboflow.com) for NVIDIA GPUs and download the relevant driver package. The following instructions are for __NVIDIA GeForce RTX 4070__ and __Linux 64-bit__.
 
 ``` shell
-wget "https://us.download.nvidia.com/XFree86/Linux-x86_64/515.57/NVIDIA-Linux-x86_64-515.57.run"
+wget "https://us.download.nvidia.com/XFree86/Linux-x86_64/550.107.02/NVIDIA-Linux-x86_64-550.107.02.run"
 ```
 Once you have downloaded it, you can run the installer:
 ``` shell
-# cd to the folder containing the drivers
-chmod +x ./NVIDIA-Linux-x86_64-515.57.run # the name may change from yours
-sudo /NVIDIA-Linux-x86_64-515.57.run
+# Change to the directory containing the drivers
+chmod +x ./NVIDIA-Linux-x86_64-550.107.02.run
+sudo ./NVIDIA-Linux-x86_64-550.107.02.run
 ```
-Follow the installation steps. Reboot and you should be able to run nvidia-smi, the output should look similar to:
+Follow the installation steps. `reboot` and you should be able to run `nvidia-smi` in the Terminal. The output should look similar to the following.
+
 ``` shell
-+-----------------------------------------------------------------------------+
-| NVIDIA-SMI 515.57       Driver Version: 515.57       CUDA Version: 11.7     |
-|-------------------------------+----------------------+----------------------+
-| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
-| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
-|                               |                      |               MIG M. |
-|===============================+======================+======================|
-|   0  NVIDIA GeForce ...  Off  | 00000000:1D:00.0 Off |                  N/A |
-|  0%   38C    P8    15W / 350W |   2759MiB / 24576MiB |      0%      Default |
-|                               |                      |                  N/A |
-+-------------------------------+----------------------+----------------------+
+Mon Aug 19 14:48:06 2024       
++---------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.107.02             Driver Version: 550.107.02                          |
+|-----------------------------------------+----------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
+|                                         |                      |               MIG M. |
+|=========================================+======================+======================|
+|   0  NVIDIA GeForce RTX 4070        Off | 00000000:01:00.0  On |                  N/A |
+|  0%   41C    P8              17W / 200W |    659MiB / 12282MiB |      3%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
 ```
 
 ## Install NVIDIA Container Toolkit

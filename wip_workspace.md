@@ -135,7 +135,7 @@ Mon Aug 19 14:48:06 2024
 
 
 ## Install NVIDIA Container Toolkit
-It allows users to build and run GPU-accelerated containers.
+It allows users to build and run GPU-accelerated containers. Installation instructions can be found [here](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html).
 
 ``` shell
 # Configure the production repository:

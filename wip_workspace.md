@@ -202,76 +202,72 @@ And you should see the correct output from nvidia-smi inside the container. In m
 
 ## Run GPU Accelerated Containers with PyTorch
 
-- Nvidia provides Docker [images](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch?ref=blog.roboflow.com) with different versions of cuda, cuDNN, and Pytorch. For a complete view of the supported software and specific versions that are packaged with the frameworks based on the container image, see the [Frameworks Support Matrix](https://docs.nvidia.com/deeplearning/frameworks/support-matrix/index.html). They are part of the [NGC Catalog](https://docs.nvidia.com/ngc/gpu-cloud/ngc-catalog-user-guide/index.html?ref=blog.roboflow.com#what-is-nvidia-ngc), a curated set of GPU-optimized software for AI, HPC, and Visualization containers.
+- Nvidia provides Docker images with different [versions](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch?ref=blog.roboflow.com) of cuda, cuDNN, and Pytorch. For a complete view of the supported software and specific versions that are packaged with the frameworks based on the container image, see the [Frameworks Support Matrix](https://docs.nvidia.com/deeplearning/frameworks/support-matrix/index.html). They are part of the [NGC Catalog](https://docs.nvidia.com/ngc/gpu-cloud/ngc-catalog-user-guide/index.html?ref=blog.roboflow.com#what-is-nvidia-ngc), a curated set of GPU-optimized software for AI, HPC, and Visualization containers.
 
-To decide which version you want to use you can head over to the [releases list](https://docs.nvidia.com/deeplearning/frameworks/pytorch-release-notes/index.html?ref=blog.roboflow.com).
+Furhter information about a specific release of container can be found at the [releases list](https://docs.nvidia.com/deeplearning/frameworks/pytorch-release-notes/index.html?ref=blog.roboflow.com). We'll use Version 23.08 in this guide.
 
-Additional information about the catalog can be found in the official guide
-
-Nvidia also provides documentation showcasing how to run these containers.
-
-
+Please consult the NVIDIA conatiner [documentation](https://docs.nvidia.com/deeplearning/frameworks/user-guide/index.html?ref=blog.roboflow.com#runcont) and [NGC Catalog User Guide](https://docs.nvidia.com/ngc/gpu-cloud/ngc-catalog-user-guide/index.html?ref=blog.roboflow.com) for more details.
 
 ``` shell
-docker run --gpus all -it --rm nvcr.io/nvidia/pytorch:22.07-py3
+docker run --gpus all -it --rm nvcr.io/nvidia/pytorch:23.08-py3
 ```
 
--it means to run the container in interactive mode, so attached to the current shell. --rm tells docker to destroy the container after we are done with it.
+`-it` runs the container in interactive mode and attaches it to the current shell. `--rm` tells docker to destroy the container after we are done with it.
 
 After pulling the image, docker will run the container and you will have access to bash from inside it.
 
 Nvidia is suggesting running the container with additional flags to improve performance, let's kill the container (ctrl + c) and re-run it with the suggested flags.
 
 ``` shell
-docker run --gpus all --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 -it --rm nvcr.io/nvidia/pytorch:22.07-py3
+docker run --gpus all --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 -it --rm nvcr.io/nvidia/pytorch:23.08-py3
 ```
-We can check everything is working by hopping inside the python console:
+We can check everything is working by hopping inside the `python` console:
 
 ``` python
 import torch
 torch.cuda.is_available()
 torch.backends.cudnn.version()
 ```
-We can see cuda is there and the cudnn version is the correct one.
+We can see CUDA is available and the cuDNN version is the correct one.
 
-But, why did we need the additional flags? Let's decompose them:
+`--ipc` IPC (POSIX/SysV IPC) provides a way to speed up inter-process communication. Since PyTorch Dataloaders with `num_workers > 1` will use different processes, we need to set it to host.
 
---ipc IPC (POSIX/SysV IPC) provides a way to speed up inter-process communication. Since PyTorch Dataloaders with num_workers > 1 will use different processes, we need to set it to host.
+`--ulimit memlock=1` calls the `ulimit` linux command and set `memlock=-1` means no limit for memory lock.
 
---ulimit memlock=1 calls the ulimit linux command and set memlock=-1 means no limit for memory lock.
-
---ulimit stack=67108864 this sets the stack size and it's specific to my host machine.
+`--ulimit stack=67108864`  sets the stack size specific to the host machine.
 
 
-## Running Code within container
-We have our shiny new Nvidia container, but how can we run code from inside it?
+## Run Code (using bash)
+Assuming you have a folder project with a file train.py
+```
+|-- project
+    |-- train.py
+```
+For example, train.py contains the famous [mnist](https://github.com/pytorch/examples/blob/main/mnist/main.py?ref=blog.roboflow.com) example from PyTorch.
 
-Let's see an example. Assuming you have a folder project with a file train.py.
-
-For simplicity, train.py contains the famous mnist example from pytorch.
-
-You can make project available to your container by:
+We can make project available to our container by:
 
 ``` shell
-docker run ... -v /<your_path>/project:/workspace/project ...
+docker run ... -v /<our_dir>/project:/workspace/project ...
 ```
 
 Remember that volumes need an absolute path.
 
--v creates a volume mapping from the host to the container. By default, the Nvidia container uses the /workspace directory. Let's see an example. Assuming you have a folder project with a file train.py.
+`-v` creates a [volume](https://docs.docker.com/storage/volumes/?ref=blog.roboflow.com) mapping from the host to the container. By default, the Nvidia container uses the /workspace directory. Assuming you have a folder project with a file train.py.
 
 Putting everything together:
 
 ``` shell
-docker run --gpus all --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 -it -v $(pwd)/project:/workspace/project --rm nvcr.io/nvidia/pytorch:22.07-py3
+docker run --gpus all --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 -it -v $(pwd)/project:/workspace/project --rm nvcr.io/nvidia/pytorch:23.08-py3
 ```
 
-You will see your code inside /workspace/project. We can directly run the code by calling python
+We can see our code inside `/workspace/project` and we can directly run the code by calling `python`
+
 ``` shell
-docker run --gpus all --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 -it -v $(pwd)/project:/workspace/project --rm nvcr.io/nvidia/pytorch:22.07-py3 python ./project/train.py
+docker run --gpus all --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 -it -v $(pwd)/project:/workspace/project --rm nvcr.io/nvidia/pytorch:23.08-py3 python ./project/train.py
 ```
 
-You'll see something like:
+We'll see something like:
 
 ```
 Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz
@@ -281,8 +277,24 @@ Train Epoch: 1 [0/60000 (0%)]   Loss: 2.283439
 Train Epoch: 1 [640/60000 (1%)] Loss: 1.827201
 ```
 
-## Run code within the Container with VS Code
-We have seen how to run our train.py from the terminal, but that's not a good development environment, is it? Well, we can use VS Code directly from within the container! Let's see how.
+## Run code (using VS Code)
+
+We can also use VS Code to run code directly from within the container.
+__Install VS Code__
+
+Add following Extensions
+- Docker
+- Dev Containers
+- vscode-pdf
+- Python
+- Python Debugger
+- Pylance
+- Jupyter
+- Jupyter Cell Tags
+- Jupyter Keymap
+- Jupyter Notebook Renderers
+- Jupyter Slide Show
+- Github Actions
 
 First of all, we need to install it. You can follow the official installation guide.
 
@@ -291,16 +303,16 @@ Next, you need to install the remote container extension. It allows us to run VS
 Ok, we are almost there. Let's fire up our Nvidia container and connect to it with VS Code. At this point, we may want to run a container without --rm to persist data, e.g. python modules.
 
 ``` shell
-docker run --gpus all --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 -it -v $(pwd)/project:/workspace/project nvcr.io/nvidia/pytorch:22.07-py3
+docker run --gpus all --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 -it -v $(pwd)/project:/workspace/project nvcr.io/nvidia/pytorch:23.08-py3
 ```
 Head over to the docker extension panel (whale on the left), right-click on the running container, and select "Attach Visual Studio Code". VS Code will attach itself to your container and a new window will popup from which you can code as you do normally. The following video shows this process.
 
 
 ## Deployment with Your Machine Learning Environment
-Since we are here, we can talk about deployment. So, at some point you may want to place your code somewhere, e.g. a server. This is very easy to do for us, since we already know our train.py will work on nvcr.io/nvidia/pytorch:22.07-py3 image. So, we can create a Dockerfile from that base image and add everything we need.
+Since we are here, we can talk about deployment. So, at some point you may want to place your code somewhere, e.g. a server. This is very easy to do for us, since we already know our train.py will work on nvcr.io/nvidia/pytorch:23.08-py3 image. So, we can create a Dockerfile from that base image and add everything we need.
 
 ```
-FROM  nvcr.io/nvidia/pytorch:22.07-py3
+FROM  nvcr.io/nvidia/pytorch:23.08-py3
 # maybe we also have a requirements.txt file
 # COPY ./requirements.txt /workspace/requirements.txt
 # RUN pip install -r requirements.txt

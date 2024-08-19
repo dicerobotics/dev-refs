@@ -55,11 +55,11 @@ echo \
 sudo apt-get update
 ```
 __Install the Docker Packages__ 
-  - __Latest:__
+  1. __Latest:__
 ``` shell
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
-  - __Specific Version:__
+  2. __Specific Version:__
 ``` shell
 # List the available versions:
 apt-cache madison docker-ce | awk '{ print $3 }'
@@ -73,8 +73,6 @@ Select the desired version and install it:
 VERSION_STRING=5:27.1.1-1~ubuntu.24.04~noble
 sudo apt-get install docker-ce=$VERSION_STRING docker-ce-cli=$VERSION_STRING containerd.io docker-buildx-plugin docker-compose-plugin
 ```
-
-
 
 __Verify Docker Installation__
 You can test your docker installation by running the hello-world container:

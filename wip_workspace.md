@@ -2,22 +2,10 @@
 We assume the system has NVIDIA GPU installed.
 Source: https://blog.roboflow.com/nvidia-docker-vscode-pytorch/
 
+## Operating System Setup
+- Ubuntu 22.04 LTS (Jammy Jellyfish)
+- 
 
-Everybody hates installing NVIDIA drivers, you have to manually download them, then install cuda, be sure to have the correct version of everything, and change them from time to time to be updated.
-
-Today we will see how to:
-
-install NVIDIA drivers
-install docker & nvidia docker
-run gpu accelerated containers with PyTorch
-develop with VS Code within the container
-From Ubuntu 20.02, the drivers will be automatically installed by the OS. That's great, but you lose control over them. Maybe you need a specific version, or your code only works with cuda 10. In that case, well things may get dirty.
-
-What if we use Docker and VS Code to directly develop from inside it?
-
-Not only will we ensure all the correct versions of cuda and cudnn are there, we can easily change them and we will make our code effortless to deploy since we know it worked from inside a specific container.
-
-Well, today we will see how to develop machine learning models like a pro with Nvidia + Docker + VS Code + PyTorch. Let's dive into it!
 
 ## Install Docker
 The first step is to install Docker. In a nutshell, docker is an open source platform for building, deploying and managing containerized applications. You can see all the installation options from the official website, we will install everything on Ubuntu 20.04. We need the engine, not Docker desktop.

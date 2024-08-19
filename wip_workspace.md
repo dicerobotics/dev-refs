@@ -103,13 +103,11 @@ reboot
 ```
 
 ## Install NVIDIA drivers
+1. Manual
 From Ubuntu 20.02, the Nvidia drivers can be installed in the Ubuntu OS installation process using `sudo ubuntu-drivers install` or `sudo ubuntu-drivers install nvidia:535`. However, We recommend installing it manually to control (fully) what goes inside the machine. To manually install the drivers, go to the [official driver page](https://www.nvidia.com/download/index.aspx?ref=blog.roboflow.com) for NVIDIA GPUs and download the relevant driver package. The following instructions are for __NVIDIA GeForce RTX 4070__ and __Linux 64-bit__.
 
 ``` shell
-# Install Pre-requisites
-sudo apt install build-essential
 # Download relevant driver
-
 wget "https://us.download.nvidia.com/XFree86/Linux-x86_64/550.107.02/NVIDIA-Linux-x86_64-550.107.02.run"
 ```
 Once you have downloaded it, you can run the installer:
@@ -134,6 +132,41 @@ Mon Aug 19 14:48:06 2024
 |                                         |                      |                  N/A |
 +-----------------------------------------+----------------------+----------------------+
 ```
+2. Auto Install
+### Remove previous NVIDIA installation (if any)
+You should only use this command if it's necessary. It might corrupt your system.
+``` shell
+!sudo apt autoremove nvidia* --purge
+```
+
+### Check Ubuntu devices
+``` shell
+ubuntu-drivers devices
+```
+You will install the NVIDIA driver whose version is tagged with __recommended__
+
+
+### Install Ubuntu drivers
+``` shell
+sudo ubuntu-drivers autoinstall
+```
+
+### Install NVIDIA drivers
+My __recommended__ version is 535, adapt to yours
+
+``` shell
+sudo apt install nvidia-driver-535
+```
+
+### Reboot & Check
+``` shell
+reboot
+```
+after restart verify that the following command works
+``` shell
+nvidia-smi
+```
+
 
 ## CUDA, cuDNN for Machine Learning (Not required)
 - It's recommended to use isolation techniques (e.g. Virtual Machines, Packaging and environments with conda, containerization with Docker, etc.) for development.

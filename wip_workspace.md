@@ -19,9 +19,9 @@ __Recommendations__
 
 ## Install [Docker (Engine)](https://docs.docker.com/engine/install/ubuntu/)
 - We need the Docker Engine, not the Docker Desktop
-- Distro maintainers provide unofficial distributions of Docker packages in APT. We must uninstall these packages before we can install the official version of Docker Engine. The unofficial packages to uninstall are 'docker.io', 'docker-compose', 'docker-compose-v2', 'docker-doc', and 'podman-docker'.
-- Docker Engine depends on 'containerd' and 'runc'. Docker Engine bundles these dependencies as one bundle in 'containerd.io'.
-- If the 'containerd' or 'runc' were installed previously, we need to uninstall them to avoid conflicts with the versions bundled with Docker Engine.
+- Distro maintainers provide unofficial distributions of Docker packages in APT. We must uninstall these packages before we can install the official version of Docker Engine. The unofficial packages to uninstall are `docker.io`, `docker-compose`, `docker-compose-v2`, `docker-doc`, and `podman-docker`.
+- Docker Engine depends on `containerd` and `runc`. Docker Engine bundles these dependencies as one bundle in `containerd.io`.
+- If the `containerd` or `runc` were installed previously, we need to uninstall them to avoid conflicts with the versions bundled with Docker Engine.
 
 __Uninstall conflicting packages__
 

@@ -14,7 +14,7 @@ __Recommendations__
 - Linux: Ubuntu 22.04 LTS (Jammy Jellyfish)
 - Window: Windows 11
 - Update both operating systems
-- [Customize](ubuntu_custom.md) OS (optional)
+- (optional) Configure network, `install` Google Chrome, `remove` Firefox, and [Customize](ubuntu_custom.md) OS.
 
 
 ## Install [Docker (Engine)](https://docs.docker.com/engine/install/ubuntu/)

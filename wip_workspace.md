@@ -135,7 +135,7 @@ Mon Aug 19 14:48:06 2024
 
 
 ## Install NVIDIA Container Toolkit
-It allows users to build and run GPU-accelerated containers. Installation instructions can be found [here](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html).
+It allows users to build and run GPU-accelerated containers. Installation instructions can be found below. See [here](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) for further reference, if needed.
 
 ``` shell
 # Configure the production repository:
@@ -201,9 +201,8 @@ And you should see the correct output from nvidia-smi inside the container. In m
 
 
 ## Run GPU Accelerated Containers with PyTorch
-We all know and love PyTorch. For the ones who have never used it, PyTorch is an open source machine learning python framework, widely used in the industry and academia.
 
-Nvidia provides different docker images with different cuda, cudnn and Pytorch versions. The official catalog is here. They are part of the NGC Catalog, a curated set of GPU-optimized software for AI, HPC, and Visualization containers.
+- Nvidia provides Docker [images](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch?ref=blog.roboflow.com) with different versions of cuda, cudnn, and Pytorch (see [Framework Support Matrix](https://docs.nvidia.com/deeplearning/frameworks/support-matrix/index.html)). They are part of the [NGC Catalog](https://docs.nvidia.com/ngc/gpu-cloud/ngc-catalog-user-guide/index.html?ref=blog.roboflow.com#what-is-nvidia-ngc), a curated set of GPU-optimized software for AI, HPC, and Visualization containers.
 
 To decide which version you want to use you can head over to the releases list. We will use the latest one, 22.07
 

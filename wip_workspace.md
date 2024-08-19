@@ -75,11 +75,13 @@ sudo apt-get install docker-ce=$VERSION_STRING docker-ce-cli=$VERSION_STRING con
 ```
 
 __Verify Docker Installation__
-You can test your docker installation by running the hello-world container:
+
+You can test your docker installation by running the `hello-world` container:
 ``` shell
 sudo docker run --rm hello-world
 ```
-The --rm flag tells docker to remove the container once done.
+The `--rm` flag tells docker to remove the container once done. Our output should look like below.
+
 ``` shell
 Hello from Docker!
 This message shows that your installation appears to be working correctly.

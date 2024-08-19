@@ -100,8 +100,7 @@ sudo usermod -aG docker $USER
 
 
 ## Install NVIDIA drivers
-Without drivers, your super cool brand-new Nvidia GPU won't work. From Ubuntu 20.02, the Nvidia drivers can be installed in the Ubuntu OS installation process. However, you may want to be in total control of what goes inside your machine.
-To manually install the drivers, go to the official driver page. In my case, RTX 3090 and Linux 64bit. If you have my same system, you can run the following command:
+From Ubuntu 20.02, the Nvidia drivers can be installed in the Ubuntu OS installation process. However, We recommend installing it manually to control what goes inside the machine. To manually install the drivers, go to the [official driver page](https://www.nvidia.com/download/index.aspx?ref=blog.roboflow.com). The following instructions are for RTX 4070 and Linux 64bit.
 
 ``` shell
 wget "https://us.download.nvidia.com/XFree86/Linux-x86_64/515.57/NVIDIA-Linux-x86_64-515.57.run"

@@ -13,6 +13,7 @@ __Recommendations__
   - Virtual Machines (VM), Windows Subsystem for Linux (WSL), etc. not recommended
 - Linux: Ubuntu 22.04 LTS (Jammy Jellyfish)
 - Window: Windows 11
+- Update both operating systems
 - [Customize](ubuntu_custom.md) OS (optional)
 
 

@@ -96,6 +96,10 @@ sudo groupadd docker
 
 # Add USER to the Docker group
 sudo usermod -aG docker $USER
+
+# Restart docker
+sudo systemctl restart docker #or
+reboot
 ```
 
 ## Install NVIDIA drivers

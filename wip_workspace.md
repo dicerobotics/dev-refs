@@ -175,28 +175,28 @@ docker run --rm --gpus all nvidia/cuda:11.0.3-base-ubuntu20.04 nvidia-smi
 And you should see the correct output from nvidia-smi inside the container. In my case:
 
 ``` shell
-+-----------------------------------------------------------------------------+
-| NVIDIA-SMI 515.57       Driver Version: 515.57       CUDA Version: 11.7     |
-|-------------------------------+----------------------+----------------------+
-| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
-| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
-|                               |                      |               MIG M. |
-|===============================+======================+======================|
-|   0  NVIDIA GeForce ...  Off  | 00000000:1D:00.0 Off |                  N/A |
-|  0%   38C    P8    15W / 350W |   2761MiB / 24576MiB |      0%      Default |
-|                               |                      |                  N/A |
-+-------------------------------+----------------------+----------------------+
-                                                                               
-+-----------------------------------------------------------------------------+
-| Processes:                                                                  |
-|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
-|        ID   ID                                                   Usage      |
-|=============================================================================|
-+-----------------------------------------------------------------------------+
++---------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.107.02            Driver Version: 550.107.02   CUDA Version: 11.0.3    |
+|-----------------------------------------+----------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
+|                                         |                      |               MIG M. |
+|=========================================+======================+======================|
+|   0  NVIDIA GeForce RTX 4070        Off | 00000000:01:00.0  On |                  N/A |
+|  0%   41C    P8              16W / 200W |    659MiB / 12282MiB |      2%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+                                                                                         
++---------------------------------------------------------------------------------------+
+| Processes:                                                                            |
+|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
+|        ID   ID                                                             Usage      |
+|=======================================================================================|
++---------------------------------------------------------------------------------------+
 
 ```
 
---gpus is used to specify which GPU the container should see, all means "all of them". If you want to expose only one you can pass its id --gpus 1. You can also specify a list of GPUs to use, --gpus "device=1,2"
+`--gpus` is used to specify which GPU the container should see, `all` means "all of them". If you want to expose only one you can pass its `id` `--gpus 1`. You can also specify a list of GPUs to use, `--gpus` "device=1,2"
 
 
 

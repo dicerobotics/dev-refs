@@ -28,42 +28,31 @@ __Uninstall conflicting packages__
 ``` shell
 for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
 ```
-'apt-get' might report that you have none of these packages installed.
+`apt-get` might report that you have none of these packages installed.
 
-Images, containers, volumes, and networks stored in '/var/lib/docker/' aren't automatically removed when we uninstall Docker. For a clean installation, we suggest to clean up any existing data.
+Images, containers, volumes, and networks stored in `/var/lib/docker/` aren't automatically removed when we uninstall Docker. For a clean installation, we suggest to clean up any existing data.
 
 ```
 sudo rm -rf /var/lib/docker
 sudo rm -rf /var/lib/containerd
 ```
 
-
-__Install Dependencies__ (If not installed already)
-``` shell
-# Dependencies
-sudo apt-get install \
-    apt-transport-https \
-    ca-certificates \
-    curl \
-    gnupg-agent \
-    software-properties-common
-```
-
-__Install Docker Engine__
+__Docker's `apt` repository setup__
 
 ``` shell
 # Add Docker's official GPG key:
-sudo mkdir -p /etc/apt/keyrings
- curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg-
+sudo apt-get update
+sudo apt-get install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
 
 # Add the repository to Apt sources:
 echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
-
-# Install the Docker Engine Packages
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 ```
 
 __Verify Docker Installation__
@@ -77,8 +66,7 @@ Hello from Docker!
 This message shows that your installation appears to be working correctly.
 ```
 
-__Create Docker group__(to manage user access)
-
+__Create Docker group__ (to manage USER access)
 
 ``` shell
 # Create Docker group

@@ -16,7 +16,8 @@ __Recommendations__
 - [Customize](ubuntu_custom.md) OS (optional)
 
 
-## Install Docker
+## Installations
+__Docker (Engine)__
 The first step is to install Docker. In a nutshell, docker is an open source platform for building, deploying and managing containerized applications. You can see all the installation options from the official website, we will install everything on Ubuntu 20.04. We need the engine, not Docker desktop.
 
 ``` shell

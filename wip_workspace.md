@@ -54,7 +54,7 @@ echo \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
 ```
-__Install the Docker Packages__ 
+__Install Docker Packages__ 
   1. Latest:
 ``` shell
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin

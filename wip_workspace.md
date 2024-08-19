@@ -55,11 +55,11 @@ echo \
 sudo apt-get update
 ```
 __Install the Docker Packages__ 
-  1. __Latest:__
+  1. Latest:
 ``` shell
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
-  2. __Specific Version:__
+  2. Specific Version:
 ``` shell
 # List the available versions:
 apt-cache madison docker-ce | awk '{ print $3 }'

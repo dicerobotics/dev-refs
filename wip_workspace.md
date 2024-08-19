@@ -1,9 +1,17 @@
-# System Setup for containerized development on Ubuntu 22.04
-We assume the system has NVIDIA GPU installed.
+# Development Workspace
 Source: https://blog.roboflow.com/nvidia-docker-vscode-pytorch/
 
-## Operating System Setup
-- Ubuntu 22.04 LTS (Jammy Jellyfish)
+## Hardware
+- CPU: 
+- GPU: 
+- Memory: 
+- Storage: 
+
+## Operating Systems)
+- Configuration: Dual Drive Dual Boot (One drive connected at a time during installations)
+      - VMs, WSL, etc. not recommended
+- Linux: Ubuntu 22.04 LTS (Jammy Jellyfish)
+- Window: Windows 11
 - [Customize](ubuntu_custom.md) OS (optional)
 
 

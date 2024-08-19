@@ -135,6 +135,7 @@ Mon Aug 19 14:48:06 2024
 ```
 
 __Installation with Package manager__
+
 In case we need to install with package manager, Use this method
 
 Remove previous NVIDIA installation (if any)

@@ -326,20 +326,39 @@ Train Epoch: 1 [0/60000 (0%)]   Loss: 2.283439
 Train Epoch: 1 [640/60000 (1%)] Loss: 1.827201
 ```
 
-## Run code (using VS Code)
 
-We can also use VS Code to run code directly from within the container.
 
-__Install VS Code__
-First of all, we need to install it. You can follow the [official installation guide](https://code.visualstudio.com/docs/setup/linux?ref=blog.roboflow.com).
- 
-Next, We need to install the [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers&ref=blog.roboflow.com). It allows us to run VS Code from inside any container.
+## Install VS Code
 
-Add following Extensions
+First of all, we need to install it. You can follow the [official installation guide](https://code.visualstudio.com/docs/setup/linux?ref=blog.roboflow.com) or follow following script.
+
+Install repository and key
+``` shell
+sudo apt-get install wget gpg
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
+echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" |sudo tee /etc/apt/sources.list.d/vscode.list > /dev/null
+rm -f packages.microsoft.gpg
+```
+
+Update the package cache and install packages
+``` shell
+
+sudo apt install apt-transport-https
+sudo apt update
+sudo apt install code # or code-insiders
+```
+
+Next, We need to install the Docker and [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers&ref=blog.roboflow.com) extension inside VS Code. It allows us to run VS Code from inside any container.
+
+Extensions
 - (Must) Docker, Dev Containers
 - (Optional) vscode-pdf, Python, Python Debugger, Pylance, Jupyter, Jupyter Cell Tags, Jupyter Keymap, Jupyter Notebook Renderers, Jupyter Slide Show, Github Actions
 
-Now we can fire up our Nvidia container and connect to it with VS Code. At this point, we may want to run a container without `--rm` to persist data, e.g. python modules.
+
+## Run code (using VS Code)
+We can now use VS Code to run code directly from within the container.
+We'll fire up our Nvidia container and connect to it from within VS Code. At this point, we may want to run a container without `--rm` to persist data, e.g. python modules.
 
 ``` shell
 docker run --gpus all --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 -it -v $(pwd)/project:/workspace/project nvcr.io/nvidia/pytorch:23.08-py3

@@ -103,6 +103,7 @@ reboot
 ```
 
 ## Install NVIDIA drivers
+
 __Manual Installation__
 
 From Ubuntu 20.02, the Nvidia drivers can be installed in the Ubuntu OS installation process using `sudo ubuntu-drivers install` or `sudo ubuntu-drivers install nvidia:535`. However, We recommend installing it manually to control (fully) what goes inside the machine. To manually install the drivers, go to the [official driver page](https://www.nvidia.com/download/index.aspx?ref=blog.roboflow.com) for NVIDIA GPUs and download the relevant driver package. The following instructions are for __NVIDIA GeForce RTX 4070__ and __Linux 64-bit__.
@@ -117,24 +118,12 @@ Once you have downloaded it, you can run the installer:
 chmod +x ./NVIDIA-Linux-x86_64-550.107.02.run
 sudo ./NVIDIA-Linux-x86_64-550.107.02.run
 ```
-Follow the installation steps. `reboot` and you should be able to run `nvidia-smi` in the Terminal. The output should look similar to the following.
+You'll need to fulfill dependency requirements depending on the current configuration of your system (e.g. gcc, make, etc.).
+Follow the installation steps. `reboot` and you should be able to run `nvidia-smi` in the terminal to see the output with driver information.
 
-``` shell
-Mon Aug 19 14:48:06 2024       
-+---------------------------------------------------------------------------------------+
-| NVIDIA-SMI 550.107.02             Driver Version: 550.107.02                          |
-|-----------------------------------------+----------------------+----------------------+
-| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
-| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
-|                                         |                      |               MIG M. |
-|=========================================+======================+======================|
-|   0  NVIDIA GeForce RTX 4070        Off | 00000000:01:00.0  On |                  N/A |
-|  0%   41C    P8              17W / 200W |    659MiB / 12282MiB |      3%      Default |
-|                                         |                      |                  N/A |
-+-----------------------------------------+----------------------+----------------------+
-```
 
-__Installation with Package manager__
+
+__Installation with Package Manager__
 
 In case we need to install with package manager, Use this method
 
@@ -151,11 +140,6 @@ ubuntu-drivers devices
 You will install the NVIDIA driver whose version is tagged with __recommended__
 
 
-Install Ubuntu drivers
-``` shell
-sudo ubuntu-drivers autoinstall
-```
-
 Install NVIDIA drivers
 My __recommended__ version is 535, adapt to yours
 
@@ -170,6 +154,30 @@ reboot
 after restarting verify that the following command works
 ``` shell
 nvidia-smi
+```
+
+```
++---------------------------------------------------------------------------------------+
+| NVIDIA-SMI 535.183.01             Driver Version: 535.183.01   CUDA Version: 12.2     |
+|-----------------------------------------+----------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
+|                                         |                      |               MIG M. |
+|=========================================+======================+======================|
+|   0  NVIDIA GeForce RTX 4070        Off | 00000000:01:00.0  On |                  N/A |
+|  0%   43C    P8              16W / 200W |    337MiB / 12282MiB |      0%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+                                                                                         
++---------------------------------------------------------------------------------------+
+| Processes:                                                                            |
+|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
+|        ID   ID                                                             Usage      |
+|=======================================================================================|
+|    0   N/A  N/A      1844      G   /usr/lib/xorg/Xorg                          126MiB |
+|    0   N/A  N/A      1979      G   /usr/bin/gnome-shell                        161MiB |
+|    0   N/A  N/A      3941      G   ...seed-version=20240819-050153.535000       41MiB |
++---------------------------------------------------------------------------------------+
 ```
 
 

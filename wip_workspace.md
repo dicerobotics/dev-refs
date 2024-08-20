@@ -336,19 +336,8 @@ First of all, we need to install it. You can follow the [official installation g
 Next, We need to install the [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers&ref=blog.roboflow.com). It allows us to run VS Code from inside any container.
 
 Add following Extensions
-- Docker
-- Dev Containers
-- vscode-pdf
-- Python
-- Python Debugger
-- Pylance
-- Jupyter
-- Jupyter Cell Tags
-- Jupyter Keymap
-- Jupyter Notebook Renderers
-- Jupyter Slide Show
-- Github Actions
-
+- (Must) Docker, Dev Containers
+- (Optional) vscode-pdf, Python, Python Debugger, Pylance, Jupyter, Jupyter Cell Tags, Jupyter Keymap, Jupyter Notebook Renderers, Jupyter Slide Show, Github Actions
 
 Now we can fire up our Nvidia container and connect to it with VS Code. At this point, we may want to run a container without `--rm` to persist data, e.g. python modules.
 

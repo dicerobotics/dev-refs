@@ -1,19 +1,17 @@
-# Development Workspace
+# Workspace for AI/ML Development
 Source: https://blog.roboflow.com/nvidia-docker-vscode-pytorch/
 
-__Hardware__
-- CPU: 
-- GPU: NVIDIA GeForce RTX 4070
-- Memory: 
-- Storage: 
-
-## Install Operating Systems (OS)
 __Recommendations__ (as of June 2024)
-- Configuration: Dual Drive Dual Boot (One drive connected at a time during OS installation)
-  - Virtual Machines (VM), Windows Subsystem for Linux (WSL), etc. not recommended
-- Linux: Ubuntu 22.04 LTS (Jammy Jellyfish)
-- Window: Windows 11
+1. Hardware
+  - CPU: 13th Gen Intel(R) Core(TM) i7-13700K
+  - GPU: NVIDIA GeForce RTX 4070
+  - Memory: 32GB
 
+2. Operating System
+  - Configuration: Dual Drive Dual Boot (One drive connected at a time during OS installation)
+    - Virtual Machines (VM), Windows Subsystem for Linux (WSL), etc. not recommended
+  - Linux: Ubuntu 22.04 LTS (Jammy Jellyfish)
+  - Window: Windows 11
 
 ## Install [Docker (Engine)](https://docs.docker.com/engine/install/ubuntu/)
 - We need the Docker Engine, not the Docker Desktop

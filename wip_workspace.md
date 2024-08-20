@@ -230,14 +230,14 @@ And you should see the correct output from nvidia-smi inside the container. In m
 
 ``` shell
 +---------------------------------------------------------------------------------------+
-| NVIDIA-SMI 550.107.02            Driver Version: 550.107.02   CUDA Version: 11.0.3    |
+| NVIDIA-SMI 535.183.01             Driver Version: 535.183.01   CUDA Version: 12.2     |
 |-----------------------------------------+----------------------+----------------------+
 | GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
 | Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
 |                                         |                      |               MIG M. |
 |=========================================+======================+======================|
 |   0  NVIDIA GeForce RTX 4070        Off | 00000000:01:00.0  On |                  N/A |
-|  0%   41C    P8              16W / 200W |    659MiB / 12282MiB |      2%      Default |
+|  0%   42C    P8              16W / 200W |    329MiB / 12282MiB |      1%      Default |
 |                                         |                      |                  N/A |
 +-----------------------------------------+----------------------+----------------------+
                                                                                          
@@ -247,7 +247,6 @@ And you should see the correct output from nvidia-smi inside the container. In m
 |        ID   ID                                                             Usage      |
 |=======================================================================================|
 +---------------------------------------------------------------------------------------+
-
 ```
 
 `--gpus` is used to specify which GPU the container should see, `all` means "all of them". If you want to expose only one you can pass its `id` `--gpus 1`. You can also specify a list of GPUs to use, `--gpus` "device=1,2"

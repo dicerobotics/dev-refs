@@ -8,13 +8,11 @@ __Hardware__
 - Storage: 
 
 ## Install Operating Systems (OS)
-__Recommendations__
+__Recommendations__ (as of June 2024)
 - Configuration: Dual Drive Dual Boot (One drive connected at a time during OS installation)
   - Virtual Machines (VM), Windows Subsystem for Linux (WSL), etc. not recommended
 - Linux: Ubuntu 22.04 LTS (Jammy Jellyfish)
 - Window: Windows 11
-- Update both operating systems
-- (optional) Configure network, `install` Google Chrome, `remove` Firefox, and [Customize](ubuntu_custom.md) OS.
 
 
 ## Install [Docker (Engine)](https://docs.docker.com/engine/install/ubuntu/)

@@ -1,5 +1,5 @@
 # Workspace for AI/ML Development
-Source: https://blog.roboflow.com/nvidia-docker-vscode-pytorch/
+This document guides on setting up a workspace environment for containerized AI/ML development.
 
 __Recommendations__ (as of June 2024)
 1. Hardware
@@ -12,6 +12,93 @@ __Recommendations__ (as of June 2024)
     - Virtual Machines (VM), Windows Subsystem for Linux (WSL), etc. not recommended
   - Linux: Ubuntu 22.04 LTS (Jammy Jellyfish)
   - Window: Windows 11
+
+## Install NVIDIA drivers
+
+__Manual Installation__
+
+From Ubuntu 20.02, the Nvidia drivers can be installed in the Ubuntu OS installation process using `sudo ubuntu-drivers install` or `sudo ubuntu-drivers install nvidia:535`. However, We recommend installing it manually to control (fully) what goes inside the machine. To manually install the drivers, go to the [official driver page](https://www.nvidia.com/download/index.aspx?ref=blog.roboflow.com) for NVIDIA GPUs and download the relevant driver package. The following instructions are for __NVIDIA GeForce RTX 4070__ and __Linux 64-bit__.
+
+``` shell
+# Download the relevant driver
+wget "https://us.download.nvidia.com/XFree86/Linux-x86_64/550.107.02/NVIDIA-Linux-x86_64-550.107.02.run"
+```
+Once you have downloaded it, you can run the installer:
+``` shell
+# Change to the directory containing the drivers
+chmod +x ./NVIDIA-Linux-x86_64-550.107.02.run
+sudo ./NVIDIA-Linux-x86_64-550.107.02.run
+```
+You'll need to fulfill dependency requirements depending on the current configuration of your system (e.g. gcc, make, etc.).
+Follow the installation steps. `reboot` and you should be able to run `nvidia-smi` in the terminal to see the output with driver information.
+
+
+
+__Installation with Package Manager__
+
+In case we need to install with the Ubuntu package manager `apt`, sse the following script
+
+Remove previous NVIDIA installation (if any)
+You should only use this command if it's necessary. It might corrupt your system.
+``` shell
+!sudo apt autoremove nvidia* --purge
+```
+
+Check Ubuntu devices
+``` shell
+ubuntu-drivers devices
+```
+You will install the NVIDIA driver whose version is tagged with __recommended__
+
+
+Install NVIDIA drivers
+My __recommended__ version is 535, adapt to yours
+
+``` shell
+sudo apt install nvidia-driver-535
+```
+
+Reboot & Check
+``` shell
+reboot
+```
+after restarting verify that the following command works
+``` shell
+nvidia-smi
+```
+
+```
++---------------------------------------------------------------------------------------+
+| NVIDIA-SMI 535.183.01             Driver Version: 535.183.01   CUDA Version: 12.2     |
+|-----------------------------------------+----------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
+|                                         |                      |               MIG M. |
+|=========================================+======================+======================|
+|   0  NVIDIA GeForce RTX 4070        Off | 00000000:01:00.0  On |                  N/A |
+|  0%   43C    P8              16W / 200W |    337MiB / 12282MiB |      0%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+                                                                                         
++---------------------------------------------------------------------------------------+
+| Processes:                                                                            |
+|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
+|        ID   ID                                                             Usage      |
+|=======================================================================================|
+|    0   N/A  N/A      1844      G   /usr/lib/xorg/Xorg                          126MiB |
+|    0   N/A  N/A      1979      G   /usr/bin/gnome-shell                        161MiB |
+|    0   N/A  N/A      3941      G   ...seed-version=20240819-050153.535000       41MiB |
++---------------------------------------------------------------------------------------+
+```
+
+
+## CUDA, cuDNN for Machine Learning (Not required)
+- It's recommended to use isolation techniques (e.g. Virtual Machines, Packaging and environments with conda, containerization with Docker, etc.) for development.
+- We do not need to install CUDA and cuDNN on the local machine if we work under containerized development environments using Docker for NVIDIA GPUs.
+- We'll install __NVIDIA Container Toolkit__ instead and use container images provided by NVIDIA.
+- The container images provided by NVIDIA already contain CUDA and cuDNN libraries.
+
+
 
 ## Install [Docker (Engine)](https://docs.docker.com/engine/install/ubuntu/)
 - We need the Docker Engine, not the Docker Desktop
@@ -98,92 +185,6 @@ sudo systemctl restart docker #or
 reboot
 ```
 
-## Install NVIDIA drivers
-
-__Manual Installation__
-
-From Ubuntu 20.02, the Nvidia drivers can be installed in the Ubuntu OS installation process using `sudo ubuntu-drivers install` or `sudo ubuntu-drivers install nvidia:535`. However, We recommend installing it manually to control (fully) what goes inside the machine. To manually install the drivers, go to the [official driver page](https://www.nvidia.com/download/index.aspx?ref=blog.roboflow.com) for NVIDIA GPUs and download the relevant driver package. The following instructions are for __NVIDIA GeForce RTX 4070__ and __Linux 64-bit__.
-
-``` shell
-# Download relevant driver
-wget "https://us.download.nvidia.com/XFree86/Linux-x86_64/550.107.02/NVIDIA-Linux-x86_64-550.107.02.run"
-```
-Once you have downloaded it, you can run the installer:
-``` shell
-# Change to the directory containing the drivers
-chmod +x ./NVIDIA-Linux-x86_64-550.107.02.run
-sudo ./NVIDIA-Linux-x86_64-550.107.02.run
-```
-You'll need to fulfill dependency requirements depending on the current configuration of your system (e.g. gcc, make, etc.).
-Follow the installation steps. `reboot` and you should be able to run `nvidia-smi` in the terminal to see the output with driver information.
-
-
-
-__Installation with Package Manager__
-
-In case we need to install with package manager, Use this method
-
-Remove previous NVIDIA installation (if any)
-You should only use this command if it's necessary. It might corrupt your system.
-``` shell
-!sudo apt autoremove nvidia* --purge
-```
-
-Check Ubuntu devices
-``` shell
-ubuntu-drivers devices
-```
-You will install the NVIDIA driver whose version is tagged with __recommended__
-
-
-Install NVIDIA drivers
-My __recommended__ version is 535, adapt to yours
-
-``` shell
-sudo apt install nvidia-driver-535
-```
-
-Reboot & Check
-``` shell
-reboot
-```
-after restarting verify that the following command works
-``` shell
-nvidia-smi
-```
-
-```
-+---------------------------------------------------------------------------------------+
-| NVIDIA-SMI 535.183.01             Driver Version: 535.183.01   CUDA Version: 12.2     |
-|-----------------------------------------+----------------------+----------------------+
-| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
-| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
-|                                         |                      |               MIG M. |
-|=========================================+======================+======================|
-|   0  NVIDIA GeForce RTX 4070        Off | 00000000:01:00.0  On |                  N/A |
-|  0%   43C    P8              16W / 200W |    337MiB / 12282MiB |      0%      Default |
-|                                         |                      |                  N/A |
-+-----------------------------------------+----------------------+----------------------+
-                                                                                         
-+---------------------------------------------------------------------------------------+
-| Processes:                                                                            |
-|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
-|        ID   ID                                                             Usage      |
-|=======================================================================================|
-|    0   N/A  N/A      1844      G   /usr/lib/xorg/Xorg                          126MiB |
-|    0   N/A  N/A      1979      G   /usr/bin/gnome-shell                        161MiB |
-|    0   N/A  N/A      3941      G   ...seed-version=20240819-050153.535000       41MiB |
-+---------------------------------------------------------------------------------------+
-```
-
-
-## CUDA, cuDNN for Machine Learning (Not required)
-- It's recommended to use isolation techniques (e.g. Virtual Machines, Packaging and environments with conda, containerization with Docker, etc.) for development.
-- We do not need to install CUDA and cuDNN on the local machine if we work under containerized development environments using Docker for NVIDIA GPUs.
-- We'll install __NVIDIA Container Toolkit__ instead and use container images provided by NVIDIA.
-- The container images provided by NVIDIA already contain CUDA and cuDNN libraries.
-
-
 ## Install NVIDIA Container Toolkit
 It allows users to build and run GPU-accelerated containers. Installation instructions can be found below. See [here](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) for further reference, if needed.
 
@@ -249,7 +250,7 @@ And you should see the correct output from nvidia-smi inside the container. In m
 
 
 
-## Run GPU Accelerated Containers with PyTorch
+## Run GPU-accelerated containers
 
 - Nvidia provides Docker images with different [versions](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch?ref=blog.roboflow.com) of cuda, cuDNN, and Pytorch. For a complete view of the supported software and specific versions that are packaged with the frameworks based on the container image, see the [Frameworks Support Matrix](https://docs.nvidia.com/deeplearning/frameworks/support-matrix/index.html). They are part of the [NGC Catalog](https://docs.nvidia.com/ngc/gpu-cloud/ngc-catalog-user-guide/index.html?ref=blog.roboflow.com#what-is-nvidia-ngc), a curated set of GPU-optimized software for AI, HPC, and Visualization containers.
 
@@ -356,7 +357,7 @@ Extensions
 - (Optional) vscode-pdf, Python, Python Debugger, Pylance, Jupyter, Jupyter Cell Tags, Jupyter Keymap, Jupyter Notebook Renderers, Jupyter Slide Show, Github Actions
 
 
-## Run code (using VS Code)
+## Run GPU accelerated container and code (using VS Code)
 We can now use VS Code to run code directly from within the container.
 We'll fire up our Nvidia container and connect to it from within VS Code. At this point, we may want to run a container without `--rm` to persist data, e.g. python modules.
 

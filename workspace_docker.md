@@ -196,14 +196,29 @@ git --version #Check installation and version
 
 Install Miniconda (Optional)
 
-Though we mostly use docker for development, we sometimes need conda based environment for temporary installations and temporary development.
+Though we mostly use docker for development, we sometimes need conda based environment for temporary installations and/or temporary development.
 ``` shell
+# Miniconda Installation
 mkdir -p ~/miniconda3
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
 bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
 rm -rf ~/miniconda3/miniconda.sh
 
 ~/miniconda3/bin/conda init bash
+
+
+# Create Environment
+conda info --env
+conda create --name env_torch
+conda activate env_torch
+conda config --append channels conda-forge # adds the new channel to the bottom, making it the lowest priority
+conda config --append channels annaconda
+conda config --append channels nvidia
+conda config --append channels pytorch
+
+# Set channel priority (optional)
+conda config --describe channel_priority
+
 ```
 
 ## Install NVIDIA Container Toolkit

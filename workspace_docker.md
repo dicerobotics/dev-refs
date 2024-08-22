@@ -194,16 +194,16 @@ sudo apt install git-all
 git --version #Check installation and version
 ```
 
-Install Miniconda (Optional)
+Install Miniconda (Optional):
+Though we mostly use docker for development, we sometimes need a conda-based environment for temporary installations or temporary development.
 
-Though we mostly use docker for development, we sometimes need conda based environment for temporary installations and/or temporary development.
 ``` shell
-# Miniconda Installation
 mkdir -p ~/miniconda3
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
 bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
 rm -rf ~/miniconda3/miniconda.sh
 
+# Initialize newly-installed Miniconda
 ~/miniconda3/bin/conda init bash
 
 
@@ -222,7 +222,7 @@ conda config --describe channel_priority
 ```
 
 ## Install NVIDIA Container Toolkit
-It allows users to build and run GPU-accelerated containers. Installation instructions can be found below. See [here](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) for further reference, if needed.
+It allows users to build and run GPU-accelerated containers. Please take a look at the installation instructions below. Please have a look [here](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) for further reference, if needed.
 
 ``` shell
 # Configure the production repository:

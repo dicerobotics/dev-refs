@@ -185,6 +185,27 @@ sudo systemctl restart docker #or
 reboot
 ```
 
+__Additional Installations__
+
+Install Git
+``` shell
+sudo apt-get update
+sudo apt install git-all
+git --version #Check installation and version
+```
+
+Install Miniconda (Optional)
+
+Though we mostly use docker for development, we sometimes need conda based environment for temporary installations and temporary development.
+``` shell
+mkdir -p ~/miniconda3
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
+bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+rm -rf ~/miniconda3/miniconda.sh
+
+~/miniconda3/bin/conda init bash
+```
+
 ## Install NVIDIA Container Toolkit
 It allows users to build and run GPU-accelerated containers. Installation instructions can be found below. See [here](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) for further reference, if needed.
 
@@ -247,6 +268,8 @@ And you should see the correct output from nvidia-smi inside the container. In m
 ```
 
 `--gpus` is used to specify which GPU the container should see, `all` means "all of them". If you want to expose only one you can pass its `id` `--gpus 1`. You can also specify a list of GPUs to use, `--gpus` "device=1,2"
+
+
 
 
 

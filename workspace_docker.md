@@ -185,9 +185,8 @@ sudo systemctl restart docker #or
 reboot
 ```
 
-__Additional Installations__
+## Install Git
 
-Install Git
 ``` shell
 sudo apt-get update
 sudo apt install git-all

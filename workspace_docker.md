@@ -209,16 +209,12 @@ rm -rf ~/miniconda3/miniconda.sh
 
 # Create Environment
 conda info --env
-conda create --name env_torch
-conda activate env_torch
-conda config --append channels conda-forge # adds the new channel to the bottom, making it the lowest priority
-conda config --append channels annaconda
-conda config --append channels nvidia
-conda config --append channels pytorch
+conda create --name ENV_NAME
+conda activate ENV_NAME
+conda config --append channels CHANNEL_NAME # adds the new channel (e.g. 'conda-forge', 'anaconda', 'nvidia', etc.) to the bottom, making it the lowest priority
 
 # Set channel priority (optional)
 conda config --describe channel_priority
-
 ```
 
 ## Install NVIDIA Container Toolkit

@@ -108,7 +108,7 @@ sudo apt install /var/cudnn-local-repo-ubuntu2204-8.9.5.29/libcudnn8-samples_8.9
 
 ### install Git
 ``` shell
-sudo apt install git
+sudo apt install git-all
 ```
 
 ### Install VS Code

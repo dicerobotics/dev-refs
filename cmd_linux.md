@@ -44,6 +44,7 @@ This file is not an exact copy of the above course. It is made for personal use 
 - Redirection
 - Pipes
 - Command substitution and expressions
+- which, whereis, echo
 
 #### Filessystem layout, partitions, paths, and links
 - Filesystem Layout
@@ -120,7 +121,11 @@ Note: This file is not an exact copy of the above course. It is made for persona
 - sed command
 
 #### File and text manipulation tools
-- cat
+- clear
+- cat, tac, less, head
+- cut
+- man
+- cd
 - using cat interactively
 - echo
 - working with large files
@@ -136,9 +141,20 @@ Note: This file is not an exact copy of the above course. It is made for persona
 - strig
 - tr
 - tee
+- tree
+- touch
 - wc
-- cut
-
+- ls
+- ln
+- dirs
+- pushd
+- popd
+- rmdir
+- exit
+- login
+- mkdir
+- pwd
+  
 #### Bash scripting
 - Script bash
 - Conditions
@@ -177,4 +193,3 @@ Note: This file is not an exact copy of the above course. It is made for persona
 - Debian Package Creation Workflow
 - Building RPM
 - Building Debian package from source
-

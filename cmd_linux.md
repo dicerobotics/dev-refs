@@ -17,20 +17,24 @@ This file lists the fundamental concepts to grasp and important commands to oper
 - GUIs: GNOME and KDE
 - Multiple man pages
 
-#### Text editors
-- echo and cat
+#### Text editing
+- echo
+- cat, tac
 - vi
+- vim
 - emacs
+- gedit
+- nano
 
 #### Shells, bash, and the command line
 - shells
-- shell intialization
+- shell initialization
 - aliases
 - Environment variables
-- Customizaing the command line prompt
+- Customizing the command line prompt
 - Special characters
 - Redirection
-- Pipes
+- cmd1 | cmd2 | cmd3
 - Command substitution and expressions
 - which, whereis, echo
 
@@ -148,7 +152,7 @@ Note: This file is not an exact copy of the above course. It is made for persona
 - Conditions
 - Loops
 - Functions
-- Creating simple bash shell script
+- Creating a simple bash shell script
 - A simple backup utility
   
 #### File and filesystem

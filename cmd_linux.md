@@ -1,33 +1,21 @@
 # Linux Commands and Concepts
-#### This file list the fundamental concepts and commands to operate linux systems
-
-## Development
-Source: "Linux for Developers" course on Coursera. 
-Caution: Please be careful if you purchase the above course on Coursera. You can't access the course material after your paid subscription ends even if you complete the course and achieve the certificate.
-This file is not an exact copy of the above course. It is made for personal use and will be updated continuously.
+This file lists the fundamental concepts to grasp and important commands to operate Linux systems
 
 #### Linux and operating system
-- Kernal vs. operating system tools
-- Unix and linux
-- Linux Distributions
-- Standard linux base
-- saftware environment
-- preparing system
-- sudo
+- Kernal vs. OS tools, Unix and linux, Linux Distributions (distros), Standard linux base
+- saftware environment, system preparations, sudo
 
 #### Graphical environment and interfaces
-- Graphical layers and interfaces
-- Using KDE desktop
-- Using multiple workspaces
-- Using multiple tabs in a terminal window
+- Graphical layers and interfaces, Using KDE desktop, Using multiple workspaces, Using multiple tabs in a terminal window
 
 #### Getting help
-- man pages
+- whatis
+- help
+- --help
+- man
 - info
-- --help and help
-- Graphical interfaces: GNOME and KDE
+- GUIs: GNOME and KDE
 - Multiple man pages
-- info
 
 #### Text editors
 - echo and cat

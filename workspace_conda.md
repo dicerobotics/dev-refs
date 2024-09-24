@@ -135,6 +135,7 @@ conda update conda
 
 ### Create a Miniconda virtual environment and activate it
 ``` shell
+conda --help
 conda info --env
 conda create --name env_torch
 conda activate env_torch

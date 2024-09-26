@@ -88,6 +88,11 @@ ADD, ARG, CMD, COPY, ENTRYPOINT, ENV, EXPOSE, FROM, HEALTHCHECK, LABEL, MAINTAIN
 ## Docker Compose
 Docker compose is a tool for defining and running multi-container applications.
 
+```
+docker-compose up
+```
+brings up the entire application stack coded in the docker-compose.yml file
+
 
 
 

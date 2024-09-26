@@ -76,6 +76,20 @@ docker run -v /opt/datadir:/var/lib/mysql mysql # running container mysql with v
 docker stop mysql
 docker rm mysql # container is deleted but data is preserved in /opt/datadir
 ```
+## Dockerfile
+Used to assemble new images from the default images. File format is
+```
+INSTRUCTION arguments
+```
+where valid INSTRUCTIONS ARE
+```
+ADD, ARG, CMD, COPY, ENTRYPOINT, ENV, EXPOSE, FROM, HEALTHCHECK, LABEL, MAINTAINER, ONBUILD, RUN, SHELL, STOPSIGNAL, USER, VOLUME, WORKDIR
+```
+## Docker Compose
+Docker compose is a tool for defining and running multi-container applications.
+
+
+
 
 
 

@@ -1,4 +1,37 @@
 # Linux Commands and Concepts
+
+## Basic Linux Commands
+``` shell
+ls    # List/Display Directory Listings.
+cd    #Change Directories.
+cp    #Copies a file or directory
+mv    #move files/folders
+pwd    #present working directory
+cat    #Display the Contents of a File to the Terminal Output.
+rm    #remove a file/folder
+mkdir  #create a directory
+df  #view free disk information
+du  #view disk usage
+find
+grep  #Search Files and Directories for Strings or Regular Expressions.
+echo
+chmod  #Change Access Controls for Files and Directories.
+chown  #change ownership
+top  #command
+w  #command
+ssh  #command
+su  #switch user
+uptime  #command
+ps  #Displays information about running processes
+systemctl  #Control system services
+ifconfig  
+usermod  #Modify user account properties.
+ping  #Test network connectivity.
+kill  #Terminate processes
+```
+
+
+
 This file lists the fundamental concepts to grasp and important commands to operate Linux systems
 
 #### Linux and operating system

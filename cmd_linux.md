@@ -159,9 +159,45 @@ root@ubundut:~# dig -f datafile.txt +noall +answer # Then run this command to ge
 ```
 
 ### Nslookup command
+NSlookup (Name Server Lookup) acts as a tool to interact with DNS servers, allowing you to manually query them for information about domain names and IP addresses.
 ``` shell
+sudo apt install dnsutils # install dnsutils that contains nslookup command
+cat /etc/resolv.conf # to varify our dns server
+
+nslookup [domain.com] # view domain name
+nslookup 142.250.71.46 # Perform a reverse DNS lookup
+nslookup -type=any [domain.com] # View full details of a domain name
+nslookup -type=mx domain.com # View the MX record of a domain
+nslookup -type=ns google.com # View Nameserver records of a domain
+nslookup domain.com [nameserver] # View information about a specific nameserver
+nslookup -debug [domain.com] # View debugging information
 
 ```
+
+## Monitoring Network Connections and Open Files
+## Netstat command
+``` shell
+# usecases
+```
+
+## Lsof command
+``` shell
+# usecases
+```
+
+## Disk Management
+``` shell
+# usecases
+```
+
+## Network File system (FNS)
+``` shell
+# usecases
+```
+
+
+
+
 
 # Concepts
 #### Linux and operating system

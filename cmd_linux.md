@@ -1,6 +1,7 @@
 # Linux Commands and Concepts
+This file lists the fundamental concepts to grasp and important commands to operate Linux systems
 
-## Basic Linux Commands
+## Basic Linux commands
 ``` shell
 ls    # List/Display Directory Listings.
 cd    #Change Directories.
@@ -30,10 +31,40 @@ ping  #Test network connectivity.
 kill  #Terminate processes
 ```
 
+## File compression commands
+### Tar Commands
+Common flags for tar commands are
+c= This flag is used to create a new archive file.
+f= This is the file name type of the archive file.
+v= This is used to print the output of the tar command verbosely.
+r= Used to append or update the existing tar file.
+
+``` shell
+tar -cvf backup.tar test      # create a tar file in Linux
+tar -xvf backup.tar          # extract the contents of the tar file
+tar -cvzf folder.tar.gz test        # create a tar.gz compression
+tar -tvf folder.tar.gz    # list the contents of a tar.gz file
+tar -xvf backup.tar.gz –wildcards ‘*.png’ #Use of wildcards in the tar command
+tar -rvf backup.tar a.txt        # add a file to an existing tar file
+```
+### Zip commands
+
+``` shell
+zip -r linuxlearninghubfiles.zip linuxlearninghubfiles    # How to create a zip file in Linux?
+unzip linuxlearninghubfiles.zip    # unzip the zip file above created use the unzip command
+zip -u linuxlearninghubfiles.zip newfile.txt  # How to add a file to an existing zip file?
+zip -d linuxlearninghubfiles.zip removefile.txt   # How to remove a file from an existing zip file?
+unzip linuxlearninghubfiles.zip -d /home/testfolder   # Extract Zip File to a Specific or Different Directory
+zipinfo myzip.zip      # List the contents of a zip file
+```
+## File Transfer Commands
+### SCP Command
+### Rsync Command
 
 
-This file lists the fundamental concepts to grasp and important commands to operate Linux systems
 
+
+# Concepts
 #### Linux and operating system
 - Kernal vs. OS tools, Unix and linux, Linux Distributions (distros), Standard linux base
 - saftware environment, system preparations, sudo

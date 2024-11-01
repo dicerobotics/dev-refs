@@ -134,6 +134,34 @@ rsync -avzhe “ssh -i key.pem” –progress /home/backup.tar.gz ajay@172.168.1
 
 rsync -avzhe ‘ssh -p 5522’ –progress /home/folder.tar.gz root@94.150.78.214:/home/  # Rsync command used to transfer files using a custom ssh port. Here 5522 is the custom SSH port of the server with IP address 94.150.78.214 . Here we are transferring folder.tar.gz from the local server to the remote server’s home directory
 ```
+## Network Commands
+### Dig command
+The “dig” command is a powerful tool for performing DNS queries in Linux. It is part of the dnsutils package and is used to look up the DNS records for a specific domain or host.
+
+Using “dig,” you can retrieve information such as the IP address of a domain, the mail exchange (MX) records for a domain, or the name servers for a domain. You can also use “dig” to perform reverse DNS lookups, which can be useful for troubleshooting network issues or determining the hostname of a particular IP address.
+
+
+
+``` shell
+dig linuxlearninghub.com  # Linux command output with all data
+dig linuxlearninghub.com +noall +answer
+
+dig linuxlearninghub.com +short # Query A record of a domain
+dig ns linuxlearninghub.com +short # Find the nameserver of a domain.
+root@ubundu:~# dig @ns1.nameserver.com linuxlearninghub.com +short # Specifying nameservers to query
+dig mx google.com +short # Query the mx record of a domain
+dig google.com ANY # Query all the DNS records of a domain
+root@ubundu:~# dig +trace google.com # Trace the dns resolution process
+dig -x 8.8.8.8 +noall +answer # Reverse dns lookup
+
+vi datafile.txt # This file contains the list of all domains that needed to be queried.
+root@ubundut:~# dig -f datafile.txt +noall +answer # Then run this command to get the IP address of all the domains listed in the data.txt file.
+```
+
+### Nslookup command
+``` shell
+
+```
 
 # Concepts
 #### Linux and operating system

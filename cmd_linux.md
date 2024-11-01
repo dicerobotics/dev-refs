@@ -95,8 +95,41 @@ You will be prompted to enter the password of both servers
 
 ### Rsync Command
 
+Syntax
+``` shell
+rsync options source destination
+```
+-r Allows to sync data recursively inside a directory.
+-z Used to compress data during transfers to save space.
+–b Performs a backup during data synchronization.
+-h Shows the numbers in the output in a human-readable format.
+-e Instructs the rsync to use the SSH protocol for remote transfers.
+–v Verbose output. Displays the details of the transfer.
 
+Copy files/folders within our system
+``` shell
+rsync -v test.txt /home/rsync/ # copy the test.txt file in the CWD to the directory /home/rsync
+rsync -avzh /home/linuxlearninghub/Download /home/linuxlearninghub/Documents # copy a directory from one location to another
+```
+Copy files/folders from one server to another
+``` shell
+rsync -avzhe ssh –progress /path/to/dir root@:/path/to/paste/dir
+rsync -avzh /home/test.txt root@107.23.196.25:/home # copy files and directories from our local server to a remote server.
+rsync -avzh root@107.23.196.25:/home/backupfolder /home/todaysbackup # copy files/folders from the remote server to our local server.
+```
+Copy files/folders from one server to another server using SSH
+``` shell
+rsync -avzhe ssh /home/test.txt root@107.23.196.25:/backup # Rsync over ssh to transfer files from our server to the remote server. -e flag for the secure transfer
+rsync -avzhe ssh root@107.23.196.25:/home/sample.txt /home/files # Rsync over ssh to transfer files from a remote server to our local server.
+rsync -avzhe ssh –progress /home/test.txt root@107.23.196.25:/backup # -progress flag to track the progress of this transfer.
+```
+Transfer files from one server to remote server using the custom ssh port and ssh key’s
+``` shell
+rsync -avzhe “ssh -i key.pem” –progress /home/backup.tar.gz ajay@172.168.10:/home/backup
+# The key.pem is the server's private key with IP address 172.168.10 so it will match along with the respected public key in the server. The backup.tar.gz file present in the /home directory of the local server is transferred to the /home/backup folder of the remote server.
 
+rsync -avzhe ‘ssh -p 5522’ –progress /home/folder.tar.gz root@94.150.78.214:/home/  # Rsync command used to transfer files using a custom ssh port. Here 5522 is the custom SSH port of the server with IP address 94.150.78.214 . Here we are transferring folder.tar.gz from the local server to the remote server’s home directory
+```
 
 # Concepts
 #### Linux and operating system

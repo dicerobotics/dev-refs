@@ -2,7 +2,7 @@
 This file lists the fundamental concepts to grasp and important commands to operate Linux systems
 
 Sources:
-https://medium.com/@linuxlearninghub/mastering-linux-the-ultimate-guide-to-becoming-a-linux-expert-44f9c4a8505a
+[https://medium.com/@linuxlearninghub/mastering-linux-the-ultimate-guide-to-becoming-a-linux-expert-44f9c4a8505a][href]
 
 ## Basic Linux commands
 ``` shell

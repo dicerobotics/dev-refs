@@ -59,13 +59,10 @@ zipinfo myzip.zip      # List the contents of a zip file
 ```
 ## File Transfer Commands
 ### SCP Command
-Basic syntax
-``` shell
-scp [options] [source] [destination]
-```
 
 Transferring files and directories to a remote server as __root__ user
 ``` shell
+scp [options] [source] [destination]
 scp [options] [source_file] [username@remote_host:destination_directory]
 
 #[options] with any desired flags or options (e.g., for custom SSH port or verbose output).

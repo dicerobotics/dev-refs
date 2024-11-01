@@ -64,15 +64,15 @@ Basic syntax
 scp [options] [source] [destination]
 ```
 
-Transferring files and directories to a remote server
+Transferring files and directories to a remote server as __root__ user
 ``` shell
 scp [options] [source_file] [username@remote_host:destination_directory]
 
-root@ubundu:~# scp backup.tar.gz root@192.168.1.100:/home  # copy file backup.tar.gz from the present directory to another server's /home directory with default ssh port no. 22.
-root@ubundu:~# scp -P11208 backup.tar.gz root@192.923.223:/home # The server destination server with custom SSH port 11208.
-root@ubundu:~# scp -r documents root@192.923.223:/home          # copy the documents directory contents from your local server to the remote server having the IP address 192.923.223
-root@ubundu:~#scp -C documents root@192.923.223:/home           # Compress the files with -C flag over the network and restore to the original size at the destination.
-root@ubundu:~# scp -pv documents root@192.923.223:/home         # -p flag prints the estimated time and the connection speed and -v flag is used to print the debug information.
+scp backup.tar.gz root@192.168.1.100:/home  # copy file backup.tar.gz from the present directory to another server's /home directory with default ssh port no. 22.
+scp -P11208 backup.tar.gz root@192.923.223:/home # The server destination server with custom SSH port 11208.
+scp -r documents root@192.923.223:/home          # copy the documents directory contents from your local server to the remote server having the IP address 192.923.223
+scp -C documents root@192.923.223:/home           # Compress the files with -C flag over the network and restore to the original size at the destination.
+scp -pv documents root@192.923.223:/home         # -p flag prints the estimated time and the connection speed and -v flag is used to print the debug information.
 ```
 [options] with any desired flags or options (e.g., for custom SSH port or verbose output).
 [source_file] with the path and filename of the file you want to copy.
@@ -81,15 +81,15 @@ root@ubundu:~# scp -pv documents root@192.923.223:/home         # -p flag prints
 [destination_directory] with the path to the directory on the remote server where you want to place the file.
 
 
-Copying Files from the Remote Server
+Copying Files from the Remote Server as __root__ user
 ``` shell
 scp [options] [username@remote_host:source_file] [destination_directory]
 
-root@ubundu:~# scp root@192.168.1.100:/home/backup.tar.gz /home/download  # copy the file backup.tar.gz from the home directory of a remote server having IP address 192.168.1.100 to the /home/download directory of your local server/system
+scp root@192.168.1.100:/home/backup.tar.gz /home/download  # copy the file backup.tar.gz from the home directory of a remote server having IP address 192.168.1.100 to the /home/download directory of your local server/system
 ```
 Copying files directly between two remote servers.
 ``` shell
-root@ubundu:~# scp user1@host1.com: backup.tar.gz user2@host2.com:/downloads # copy the backup file from remote host1 to the destination directory downloads of host2
+scp user1@host1.com: backup.tar.gz user2@host2.com:/downloads # copy the backup file from remote host1 to the destination directory downloads of host2
 ```
 You will be prompted to enter the password of both servers
 

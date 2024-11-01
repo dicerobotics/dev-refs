@@ -1,6 +1,9 @@
 # Linux Commands and Concepts
 This file lists the fundamental concepts to grasp and important commands to operate Linux systems
 
+Sources:
+https://medium.com/@linuxlearninghub/mastering-linux-the-ultimate-guide-to-becoming-a-linux-expert-44f9c4a8505a
+
 ## Basic Linux commands
 ``` shell
 ls    # List/Display Directory Listings.

@@ -95,10 +95,6 @@ You will be prompted to enter the password of both servers
 
 ### Rsync Command
 
-Syntax
-``` shell
-rsync options source destination
-```
 -r Allows to sync data recursively inside a directory.
 -z Used to compress data during transfers to save space.
 –b Performs a backup during data synchronization.
@@ -108,6 +104,16 @@ rsync options source destination
 
 Copy files/folders within our system
 ``` shell
+rsync options source destination # syntax
+
+#-r Allows to sync data recursively inside a directory.
+#-z Used to compress data during transfers to save space.
+#–b Performs a backup during data synchronization.
+#-h Shows the numbers in the output in a human-readable format.
+#-e Instructs the rsync to use the SSH protocol for remote transfers.
+#–v Verbose output. Displays the details of the transfer.
+
+
 rsync -v test.txt /home/rsync/ # copy the test.txt file in the CWD to the directory /home/rsync
 rsync -avzh /home/linuxlearninghub/Download /home/linuxlearninghub/Documents # copy a directory from one location to another
 ```

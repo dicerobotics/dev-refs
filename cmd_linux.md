@@ -181,6 +181,26 @@ nslookup -debug [domain.com] # View debugging information
 ## Netstat command
 ``` shell
 # usecases
+sudo apt-get update
+sudo apt-get install net-tools
+
+netstat -i # Netstat command used to list all the network interfaces of a system.
+netstat -a | more # Netstat command used to list all the listening and non-listening sockets of both TCP and UDP.
+# If you want to list only the TCP ports use Netstat -at and if you want to display only the UDP ports use Netstat -au.
+
+netstat -l # Netstat command used to list only the listening connections.
+# similarly, if you want to view only the listening TCP ports use the command netstat -lt and for UDP ports use the command netstat -lu.
+
+netstat -p # Netstat command used to display the process id of all connections.
+# Also, you can use netstat -pt command to display the process id of all TCP connections and netstat -tu command to display the process id of all UDP connections.
+
+netstat -pnltu # Netstat command used to display the list of networks, their current states, and their associated ports.
+# Similarly you can use the grep command along with netstat command to see the status of a particular port and which service is listening on that port.
+netstat -pnltu | grep 53
+
+netstat -an | grep ‘LISTEN’ # How to use Netstat command to check all the listening connections.
+
+Netstat -r # How to see the kernel routing table information using Netstat command.
 ```
 
 ## Lsof command

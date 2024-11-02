@@ -193,7 +193,7 @@ nslookup -debug [domain.com] # View debugging information
 # usecases
 ```
 
-## Network File system (FNS)
+## Network File system (NFS)
 ``` shell
 # usecases
 ```

@@ -180,7 +180,6 @@ nslookup -debug [domain.com] # View debugging information
 ## Monitoring Network Connections and Open Files
 ## Netstat command
 ``` shell
-# usecases
 sudo apt-get update
 sudo apt-get install net-tools
 
@@ -204,8 +203,20 @@ Netstat -r # How to see the kernel routing table information using Netstat comma
 ```
 
 ## Lsof command
+The lsof the command is used to list all open files on a Linux system. This can be useful for identifying which files are currently in use, and by which processes.
+
 ``` shell
-# usecases
+lsof -u username # To List, all the files opened by a specific user.
+lsof -u ^ username # List all the files opened by users except a particular user.
+lsof -c chrome # To list files opened by a specific command
+lsof -c ssh # to see all the opened files of program ssh.
+
+lsof D /home/directoryname # To find all processes that are running in a specific directory
+lsof /path/to/file # To find a process that has a particular file open
+lsof -i TCP:80 # Finding a process that is listening on a particular port
+lsof /dev/nvme0n1p5 # To list all open files of a specific device
+lsof -m # Detecting and diagnosing memory leaks
+lsof -p <PID> # To list the files opened by a specific PID
 ```
 
 ## Disk Management

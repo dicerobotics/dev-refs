@@ -221,7 +221,17 @@ lsof -p <PID> # To list the files opened by a specific PID
 
 ## Disk Management
 ``` shell
-# usecases
+fdisk -l # List the current partitions available using fdisk
+lsblk
+
+sudo fdisk /dev/xvdf # Select the storage disk.
+fdisk -l # Verify the partition’s created.
+
+mkfs -t ext4 /dev/xvdf1 # Format the partitions with ext4 filesystem
+mkfs -t ext4 /dev/xvdf2 # Format the partitions with ext4 filesystem
+
+mount /dev/xvdf1 /home/ # Mounting the partitions.
+mount /dev/xvdf2 /backup/ # Mounting the partitions.
 ```
 
 ## Network File system (NFS)

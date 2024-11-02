@@ -151,14 +151,14 @@ dig linuxlearninghub.com +noall +answer
 
 dig linuxlearninghub.com +short # Query A record of a domain
 dig ns linuxlearninghub.com +short # Find the nameserver of a domain.
-root@ubundu:~# dig @ns1.nameserver.com linuxlearninghub.com +short # Specifying nameservers to query
+dig @ns1.nameserver.com linuxlearninghub.com +short # Specifying nameservers to query
 dig mx google.com +short # Query the mx record of a domain
 dig google.com ANY # Query all the DNS records of a domain
-root@ubundu:~# dig +trace google.com # Trace the dns resolution process
+dig +trace google.com # Trace the dns resolution process
 dig -x 8.8.8.8 +noall +answer # Reverse dns lookup
 
 vi datafile.txt # This file contains the list of all domains that needed to be queried.
-root@ubundut:~# dig -f datafile.txt +noall +answer # Then run this command to get the IP address of all the domains listed in the data.txt file.
+dig -f datafile.txt +noall +answer # Then run this command to get the IP address of all the domains listed in the data.txt file.
 ```
 
 ### Nslookup command

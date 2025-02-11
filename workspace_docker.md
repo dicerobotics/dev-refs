@@ -403,3 +403,19 @@ And the model will start training.
 
 We completely skip the painful step to make sure our code works in a specific container, since we develop directly inside it!
 
+
+
+## Final Check
+If Windows 11 isn't syncing time on boot after this setup, here’s how to fix it:
+
+- Ensure Time Sync is Enabled:
+Go to Settings > Time & language > Date & time, and make sure Set time automatically is on. Click Sync now to test.
+- Check Windows Time Service:
+Open Services (Win+R, type services.msc), find Windows Time, set it to Automatic, and start the service if it's not running.
+- Use a Different Time Server:
+Open Control Panel > Clock and Region > Date and Time > Internet Time, click Change settings, and choose servers like time.nist.gov or pool.ntp.org.
+- Force Sync on Boot via Task Scheduler:
+Open Task Scheduler and create a task.
+Set the trigger to At startup.
+Add an action to run the command:bashw32tm /resync
+These steps should ensure your time syncs on boot.

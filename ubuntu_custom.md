@@ -24,3 +24,4 @@ Workspaces only work on primary display be default. If you need to include all c
 gsettings get org.gnome.mutter workspaces-only-on-primary # test current configuration where is "workspace-only-on-primary" is "true" by default
 gsettings set org.gnome.mutter workspaces-only-on-primary false # update configuration
 ```
+This behavior may also be configured in Settings->Multitasking. YOu may also consider making fixed number of static workspaces instead of using dynamic workspaces in Ubuntu.

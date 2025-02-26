@@ -21,6 +21,6 @@ sudo apt install gnome-tweaks
 ## Workspace Behaviour
 Workspaces only work on primary display be default. If you need to include all connected monitors to the current workspace, use following commands in terminal.
 ``` shell
-gsettings get org.gnome.mutter workspaces-only-on-primary % test current configuration where is "workspace-only-on-primary" is "true" by default
-gsettings set org.gnome.mutter workspaces-only-on-primary false % update configuration
+gsettings get org.gnome.mutter workspaces-only-on-primary # test current configuration where is "workspace-only-on-primary" is "true" by default
+gsettings set org.gnome.mutter workspaces-only-on-primary false # update configuration
 ```

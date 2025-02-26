@@ -18,3 +18,9 @@ A practically better strategy to manage the keyboard and to customize it as per 
 sudo add-apt-repository universe #Add's universe repository for updates
 sudo apt install gnome-tweaks
 ```
+## Workspace Behaviour
+Workspaces only work on primary display be default. If you need to include all connected monitors to the current workspace, use following commands in terminal.
+``` shell
+gsettings get org.gnome.mutter workspaces-only-on-primary % test current configuration where is "workspace-only-on-primary" is "true" by default
+gsettings set org.gnome.mutter workspaces-only-on-primary false % update configuration
+```

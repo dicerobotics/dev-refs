@@ -2,11 +2,9 @@
 
 ### Custom keyboard shortcuts for inter-OS compatibility
 
-Keyboard: Apple Keyboard. 
-
-Key Remap: Map **"Win"** key to **"CMD"** key and vice versa.
-
-Shortcuts: Default + Custom (overwritten to default for consistency across operating systems).
+Keyboard: Apple Keyboard.  
+Key Remap: Map **"Win"** key to **"CMD"** key and vice versa.  
+Shortcuts: Default + Custom (overwritten to default for consistency across operating systems).  
 
 
 | Custom Shortcuts | Scope | MacOS | Windows OS | Linux (Ubuntu) | Remark |
@@ -28,5 +26,5 @@ Shortcuts: Default + Custom (overwritten to default for consistency across opera
 |Switch Desktop Left|	System	|Ctrl+Left|	Win+Left|	Win+Left	|Consistent|
 
 Current Limitations
-•	Can’t use Native “Ctrl+Right” and “Ctrl+Left” on Windows OS. It can be reprogrammed but the task is yet pending.
-•	Can’t use native F7, F8, F9, F10, F11, F12 on Windows OS. There is no solution in mind yet.
+- Can’t use Native “Ctrl+Right” and “Ctrl+Left” on Windows OS. It can be reprogrammed but the task is yet pending.
+- Can’t use native F7, F8, F9, F10, F11, F12 on Windows OS. There is no solution in mind yet.  

@@ -22,8 +22,9 @@ Shortcuts: Default + Custom (overwritten to default for consistency across opera
 |Previous Tab|	Safari/Chrome	|CMD+Shift+[|	**Ctrl+Shift+[**	|||	
 |Spotlight Search|	System|	CMD+Space|	**Ctrl+Space** |	**Ctrl+Space** |	Consistent|
 |Switch desktop Right|	System|	Ctrl+Right|	**Win+Right**	| **Win+Right** |	Consistent|
-|Switch Desktop Left|	System	|Ctrl+Left|	**Win+Left** |	**Win+Left**	|Consistent|
-Note: The shortcut in **Bold** are the changed ones from the defult.
+|Switch Desktop Left|	System	|Ctrl+Left|	**Win+Left** |	**Win+Left**	|Consistent|  
+
+Note: The shortcuts in **Bold** are the ones changed from the defult.
 
 Current Limitations
 - Can’t use Native “Ctrl+Right” and “Ctrl+Left” on Windows OS. It can be reprogrammed but the task is yet pending.

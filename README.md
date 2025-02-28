@@ -3,13 +3,13 @@
 ### Custom keyboard shortcuts for inter-OS compatibility
 
 Keyboard: Apple Keyboard.  
-Key Remap: Map **"Win"** key to **"CMD"** key and vice versa.  
+Key Remap: Map **"CMD"** key to **"Ctrl"** key and remap **Ctrl** key to **Win** key in Windows OS.  
 Shortcuts: Default + Custom (overwritten to default for consistency across operating systems).  
 
 | Custom Shortcuts | Scope | MacOS | Windows OS | Linux (Ubuntu) | Remark |
 |-|-|-|-|-|-|
-|Lock Screen	| System	|**CMD+L**	|Ctrl+L|	**Ctrl+L**	|Consistent|
-|Address Bar|	Safari/Chrome|	**CMD+K**|	Ctrl+K|	Ctrl+K|	Consistent|
+|Lock Screen	| System	| **CMD+L**	| Ctrl+L |	**Ctrl+L**	| Consistent |
+| Address Bar |	Safari/Chrome |	**CMD+K** |	Ctrl+K |	Ctrl+K |	Consistent |
 |Volume Up	|System|	F12|	**F12**|	Volume Up|	Consistent|
 |Volume Down|	System|	F11|	**F11**|	Volume Down|	Consistent|
 |Volume Mute|	System|	F10	| **F10**	|Volume Mute|	Consistent|

@@ -8,7 +8,7 @@ Shortcuts: Default + Custom (overwritten to default for consistency across opera
 
 | Custom Shortcuts | Scope | MacOS | Windows OS | Linux (Ubuntu) | Remark |
 |-|-|-|-|-|-|
-|Lock Screen	| System	|**CMD+L**	|Ctrl+L|	Ctrl+L	|Consistent|
+|Lock Screen	| System	|**CMD+L**	|Ctrl+L|	**Ctrl+L**	|Consistent|
 |Address Bar|	Safari/Chrome|	**CMD+K**|	Ctrl+K|	Ctrl+K|	Consistent|
 |Volume Up	|System|	F12|	**F12**|	Volume Up|	Consistent|
 |Volume Down|	System|	F11|	**F11**|	Volume Down|	Consistent|

@@ -390,6 +390,7 @@ apt update
 apt install openssh-server
 service --status-all
 ```
+
 ![image](https://github.com/user-attachments/assets/55d8df12-c7fb-4294-9913-1b835977b77d)
 
 We can see that our SSH server is not activated. Before we activate our SSH server we need to Set a password to our container. 
@@ -400,18 +401,22 @@ Start by setting a password to your container via the following command
 ```
 passwd root 
 ```
+
 ![image](https://github.com/user-attachments/assets/35109323-3b6d-47ad-a0cf-3e2b4370ee8c)
 
 Next we need to install the nano text editor. We will use this text editor to open up the **sshd_config** file and change it.
+
 ```
 apt install nano 
 nano /etc/ssh/sshd_config
 ```
 
 Move down till you see the **#Authentication** section
+
 ![image](https://github.com/user-attachments/assets/a94ab2e9-c3d2-43e5-be78-51d65acb9730)
 
 Add **PermitRootLogin Yes** to the config file.
+
 ![image](https://github.com/user-attachments/assets/9d15c74c-856e-4ac0-b830-fad061157211)
 
 Now write this out using **Ctrl + O** , press enter and then close nano. Now we can start our SSH server.
@@ -420,23 +425,31 @@ Now write this out using **Ctrl + O** , press enter and then close nano. Now we 
 service ssh start
 service --status-all
 ```
+
 ![image](https://github.com/user-attachments/assets/6b01821e-d012-4484-8849-861587785677)
 
 Now we have an active SSH server within our container. Now we can connect to this container via SSH using VS Code.
 
 ![image](https://github.com/user-attachments/assets/f9ed6b24-5f59-40d7-aeb7-89b1ad1177b4)
+
 When your adding a new SSH connection , you would need to select Add New SSH Host.
 
 ![image](https://github.com/user-attachments/assets/578982b7-af37-4861-81c2-7b4d8783b24b)
+
 Now connect to the container with the following command
+
 ```
 ssh root@localhost -p 2200
 ```
+
 Select the config file and press enter , you see a message prompting you to connect to the container at the bottom.
 
 Now enter the password of the container.
+
 ![image](https://github.com/user-attachments/assets/2a02aecd-ec58-4152-85f2-c3ab17eab75c)
+
 There you go !! 🙌 you have now successfully connected to your GPU enabled container via SSH using VS Code.
+
 Credits (for SSH configuration and VS Code connection): https://medium.com/@shamaldesilva6991/access-gpu-enabled-containers-with-vs-code-0c7ed4b8f245
 
 

@@ -368,7 +368,12 @@ Extensions
 - (Optional) vscode-pdf, Python, Python Debugger, Pylance, Jupyter, Jupyter Cell Tags, Jupyter Keymap, Jupyter Notebook Renderers, Jupyter Slide Show, Github Actions
 
 
-## Run GPU accelerated container and code (using VS Code)
+## Run GPU accelerated container and code
+From here on, we have two options.
+1. We can directly run GPU accelerated container and code from within the VS Code (preferable if you intend to keep container on your local machine).
+2. We can install and SSH server inside the container and use VS code to connect to this container via SSH connection (preferable if container is on server and you're working from different local machine).
+
+### Run directly inside VS Code without SSH connection
 We can now use VS Code to run code directly from within the container.
 We'll fire up our Nvidia container and connect to it from within VS Code. At this point, we may want to run a container without `--rm` to persist data, e.g. python modules.
 
@@ -376,6 +381,63 @@ We'll fire up our Nvidia container and connect to it from within VS Code. At thi
 docker run --gpus all --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 -it -v $(pwd)/project:/workspace/project nvcr.io/nvidia/pytorch:23.08-py3
 ```
 Head over to the docker extension panel (whale on the left), right-click on the running container, and select "Attach Visual Studio Code". VS Code will attach itself to your container and a new window will pop up from which you can code as you do normally.
+
+### Run with VS code through SSH connection
+For this we would have to install a SSH server within our container. Lets install and configure OpenSSH within the container.
+```
+# Update the container and install open ssh with in the container
+apt update
+apt install openssh-server
+service --status-all
+```
+![image](https://github.com/user-attachments/assets/55d8df12-c7fb-4294-9913-1b835977b77d)
+
+We can see that our SSH server is not activated. Before we activate our SSH server we need to Set a password to our container. 
+— This password will be used later when we need to log into our container from VS Code. Make sure to remember it
+
+Add necessary configurations to the **sshd_config** file
+Start by setting a password to your container via the following command
+```
+passwd root 
+```
+![image](https://github.com/user-attachments/assets/35109323-3b6d-47ad-a0cf-3e2b4370ee8c)
+
+Next we need to install the nano text editor. We will use this text editor to open up the **sshd_config** file and change it.
+```
+apt install nano 
+nano /etc/ssh/sshd_config
+```
+
+Move down till you see the **#Authentication** section
+![image](https://github.com/user-attachments/assets/a94ab2e9-c3d2-43e5-be78-51d65acb9730)
+
+Add **PermitRootLogin Yes** to the config file.
+![image](https://github.com/user-attachments/assets/9d15c74c-856e-4ac0-b830-fad061157211)
+
+Now write this out using **Ctrl + O** , press enter and then close nano. Now we can start our SSH server.
+
+```
+service ssh start
+service --status-all
+```
+![image](https://github.com/user-attachments/assets/6b01821e-d012-4484-8849-861587785677)
+
+Now we have an active SSH server within our container. Now we can connect to this container via SSH using VS Code.
+
+![image](https://github.com/user-attachments/assets/f9ed6b24-5f59-40d7-aeb7-89b1ad1177b4)
+When your adding a new SSH connection , you would need to select Add New SSH Host.
+
+![image](https://github.com/user-attachments/assets/578982b7-af37-4861-81c2-7b4d8783b24b)
+Now connect to the container with the following command
+```
+ssh root@localhost -p 2200
+```
+Select the config file and press enter , you see a message prompting you to connect to the container at the bottom.
+
+Now enter the password of the container.
+![image](https://github.com/user-attachments/assets/2a02aecd-ec58-4152-85f2-c3ab17eab75c)
+There you go !! 🙌 you have now successfully connected to your GPU enabled container via SSH using VS Code.
+Credits (for SSH configuration and VS Code connection): https://medium.com/@shamaldesilva6991/access-gpu-enabled-containers-with-vs-code-0c7ed4b8f245
 
 
 ## Deployment with Machine Learning Environment

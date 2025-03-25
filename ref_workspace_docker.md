@@ -341,7 +341,8 @@ Train Epoch: 1 [640/60000 (1%)] Loss: 1.827201
 
 ## Install VS Code
 
-First of all, we need to install it. You can follow the [official installation guide](https://code.visualstudio.com/docs/setup/linux?ref=blog.roboflow.com) or follow following script.
+
+We can follow the [official installation guide](https://code.visualstudio.com/docs/setup/linux?ref=blog.roboflow.com) or follow following script.
 
 Install repository and key
 ``` shell

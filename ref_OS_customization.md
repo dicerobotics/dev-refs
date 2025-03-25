@@ -1,7 +1,7 @@
 ## Keyboard Customization. (Switching keyboard types, options, layouts, etc.)
 
 ### Ubuntu
-**Approach A**
+**Approach A:**
 Switching the Ctrl, Shift, Alt, and Super keys is one of the things one can change through XKB options. The line XKBOPTIONS in /etc/default/keyboard sets these systemwide. But it's not a good option because it makes the change permanent and difficult to revert by changing XKBOPTIONS again. Moreover, the Gnome Shell desktop can override that with its own dconf setting in 
 ``` shell
 gsettings get org.gnome.desktop.input-sources xkb-options
@@ -12,7 +12,7 @@ By default on Ubuntu, the setting is empty, so you could undo any change made wi
 gsettings reset org.gnome.desktop.input-sources xkb-options
 ```
 
-**Approach B**
+**Approach B:**
 A practically better strategy to manage the keyboard and to customize it as per your requirements is through gnome-tweak utility. This utility can be installed with the apt package manager
 
 ``` shell

@@ -378,7 +378,7 @@ We can now use VS Code to run code directly from within the container.
 We'll fire up our Nvidia container and connect to it from within VS Code. At this point, we may want to run a container without `--rm` to persist data, e.g. python modules.
 
 ``` shell
-docker run --gpus all --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 -it -v $(pwd)/project:/workspace/project nvcr.io/nvidia/pytorch:23.08-py3
+docker run --gpus all --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 -it -v $(pwd)/project-name:/workspace/project nvcr.io/nvidia/pytorch:23.08-py3
 ```
 Head over to the docker extension panel (whale on the left), right-click on the running container, and select "Attach Visual Studio Code". VS Code will attach itself to your container and a new window will pop up from which you can code as you do normally.
 

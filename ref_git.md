@@ -157,9 +157,9 @@ This helps you pull updates from the original project:
 git remote add upstream https://github.com/ORIGINAL_OWNER/REPO_NAME.git
 ```
 
-Now you have:
-`origin`: your fork
-`upstream`: the original repo
+Now you have:  
+`origin`: your fork  
+`upstream`: the original repo  
 
 To pull in updates later:
 ```bash
@@ -196,13 +196,9 @@ git push -u origin main
 
 ### 8. Add License, README, and Attribution Files
 Include:
-
 `LICENSE` (your license)
-
 `README.md`
-
 `MODIFICATIONS.md` or `ACKNOWLEDGMENTS.md`
-
 `NOTICE` if required
 
 ### 9. (Optional) Publish Releases
@@ -222,15 +218,16 @@ Go to the Releases tab on GitHub to tag stable versions (v1.0, etc.)
 
 
 ### Best Practices
-Keep commits atomic and descriptive  
-Use branches for features/changes  
-Regularly pull from `upstream`  
-Document your changes (e.g., `MODIFICATIONS.md`)  
-Respect and follow license terms of any included code  
+- Keep commits atomic and descriptive  
+- Use branches for features/changes  
+- Regularly pull from `upstream`  
+- Document your changes (e.g., `MODIFICATIONS.md`)  
+- Respect and follow license terms of any included code  
 
 
 ### Suggested Project Structure
 
+```vbnet
 your-project/
 │
 ├── LICENSE                  ← Your project's license
@@ -254,6 +251,6 @@ your-project/
 │
 └── scripts/                 ← Setup, data, or install scripts
     └── install.sh
-
+```
 
 

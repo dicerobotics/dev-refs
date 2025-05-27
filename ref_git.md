@@ -131,9 +131,8 @@ git stash drop
 ```
 
 
-# Step-by-Step GitHub Setup to reuse open source projects to accomplish your own work
+# Setup to modify an open source project and use to accomplish your own work
 ### 1. Fork the Original Repository
-
 - If the project is on GitHub, and you plan to modify it:  
 - Go to the original repo's GitHub page.
 - Click the Fork button (top-right).
@@ -142,17 +141,14 @@ This creates a copy of the repo under your GitHub account.
 Use fork if you want to track changes from the original project or potentially contribute back.  
 
 ### 2. Clone Your Fork Locally
-
 Download your fork to your machine:
-
 ```bash
 git clone https://github.com/YOUR_USERNAME/REPO_NAME.git
 cd REPO_NAME
 ```
 
-### 3. Add the Original Repo as a Remote (Optional but Recommended)
+### 3. Add the Original Repo as a Remote (Optional)
 This helps you pull updates from the original project:
-
 ```bash
 git remote add upstream https://github.com/ORIGINAL_OWNER/REPO_NAME.git
 ```
@@ -166,6 +162,7 @@ To pull in updates later:
 git fetch upstream
 git merge upstream/main
 ```
+Caution: merging upstream/main may raise conflict with your modifications, if any.
 
 ### 4. Make Changes
 Edit files, add your own code, and create new files as needed.  
@@ -241,7 +238,7 @@ your-project/
 │   └── ...
 │
 ├── third_party/             ← Modified or reused open source code
-│   └── some_library/
+│   └── library/
 │       ├── LICENSE
 │       ├── original_file.py
 │       └── modified_file.py

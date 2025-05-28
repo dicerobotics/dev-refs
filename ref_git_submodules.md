@@ -69,6 +69,7 @@ touch MODIFICATIONS.md
 git add .
 git commit -m "Initial project with third-party libraries"
 git remote add origin https://github.com/yourname/your_project.git
+git branch -M main
 git push -u origin main
 ```
 

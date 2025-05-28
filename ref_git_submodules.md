@@ -6,6 +6,8 @@ If not done already:
 mkdir your_project
 cd your_project
 git init
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
 ```
 
 ### 2. Add a Third-Party Repo as a Submodule
@@ -50,6 +52,9 @@ rm -rf third_party/library/.git
 Don't forget to track your Modifications
 
 - Add a MODIFICATIONS.md in each third_party/libX/:
+``` bash
+touch MODIFICATIONS.md
+```
 
 ``` markdown
 ### Modifications to library X

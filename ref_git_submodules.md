@@ -23,7 +23,7 @@ This will:
 - Clone the repo into `third_party/libX/`   
 - Track it via `.gitmodules`  
 
-### 3. Commit Submodule Setup
+### 3a. Commit Submodule Setup
 ``` bash
 git commit -m "Add third-party libraries as submodules in third_party/"
 ```
@@ -60,6 +60,16 @@ touch MODIFICATIONS.md
 ### Modifications to library X
 - Renamed `config.py` → `my_config.py`
 - Added `error_handler.py`
+```
+
+
+### 3b. Push your project to GitHub
+
+```bash
+git add .
+git commit -m "Initial project with third-party libraries"
+git remote add origin https://github.com/yourname/your_project.git
+git push -u origin main
 ```
 
 ### 4. When Cloning Your Project Later
@@ -106,11 +116,3 @@ git add third_party/lib1
 git commit -m "Lock lib1 to specific commit"
 ```
 
-### 8. Push your project to GitHub
-
-```bash
-git add .
-git commit -m "Initial project with third-party libraries"
-git remote add origin https://github.com/yourname/your_project.git
-git push -u origin main
-```

@@ -66,10 +66,11 @@ touch MODIFICATIONS.md
 ### 3b. Push your project to GitHub
 
 ```bash
-git add .
+git status                   # See what’s changed
+git add .                    # Stage all changes
 git commit -m "Initial project with third-party libraries"
-git remote add origin https://github.com/yourname/your_project.git
-git branch -M main
+git remote add origin https://github.com/yourname/your_project.git         # For first time only
+git branch -M main                                                         # For first time only
 git push -u origin main
 ```
 

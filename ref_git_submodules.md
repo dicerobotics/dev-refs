@@ -106,7 +106,7 @@ Caution: pulling, merging upstream/main may raise conflict with your modificatio
     - Or **track changes locally**, and commit inside the submodule directory
 - Either way, you can document changes in MODIFICATIONS.md
 
-### 6a. If you need not to track the original remote of submodule, you might consider treating it as a directory
+### 6a. If you need not to track the original remote of submodule, you might consider treating it as a directory - (Not worked)
 - You can completely remore the .git file
 ``` bash
 git rm --cached third_party/sub_module
@@ -123,7 +123,7 @@ git config -f .gitmodules --remove-section submodule.third_party/CUT    # Remove
 git config --remove-section submodule.third_party/CUT                   # Remove from Git config:
 rm -rf .git/modules/third_party/CUT                                     # Git's metadata:
 rm -rf third_party/CUT                                                  # Remove directory
-git add .gitmodules                                                     # Stage cleanup
+git add .gitmodules third_party/CUT                                                # Stage cleanup
 git commit -m "Fully removed CUT submodule"                             # commit cleanup
 ```
 

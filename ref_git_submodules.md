@@ -106,6 +106,30 @@ Caution: pulling, merging upstream/main may raise conflict with your modificatio
     - Or **track changes locally**, and commit inside the submodule directory
 - Either way, you can document changes in MODIFICATIONS.md
 
+### 6a. If you need not to track the original remote of submodule, you might consider treating it as a directory
+- You can completely remore the .git file
+``` bash
+git rm --cached third_party/sub_module
+rm -rf .git/modules/third_party/sub_module
+mv third_party/sub_module .tmp_sub_modlue
+rm -rf .tmp_sub_module/.git
+mv .tmp_sub_module third_party/sub_module
+git add third_party/sub_module
+git commit -m "Converted submodule to regular directory"
+```
+### 6b. If you want to fully remove submodule later
+``` bash
+git config -f .gitmodules --remove-section submodule.third_party/CUT    # Remove the section from .gitmodules
+git config --remove-section submodule.third_party/CUT                   # Remove from Git config:
+rm -rf .git/modules/third_party/CUT                                     # Git's metadata:
+rm -rf third_party/CUT                                                  # Remove directory
+git add .gitmodules                                                     # Stage cleanup
+git commit -m "Fully removed CUT submodule"                             # commit cleanup
+```
+
+
+
+
 ### 7. Optional: Lock to a Specific Commit
 
 Sometimes you want to lock your project to a known stable version of a library.  
